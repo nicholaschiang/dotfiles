@@ -1,0 +1,5 @@
+Host watchog
+    HostName watchog.stanford.edu
+    User nchiang
+    ProxyJump sing.stanford.edu
+    LocalForward 8890 127.0.0.1:8890

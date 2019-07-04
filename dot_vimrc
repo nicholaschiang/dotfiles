@@ -1,0 +1,130 @@
+"""""""""""""""""""""""""""""""
+" => Plugins via vim-plug
+"""""""""""""""""""""""""""""""
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+" Make sure you use single quotes
+
+" Find stuff
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
+Plug 'scrooloose/nerdtree'
+
+" Format stuff
+Plug 'scrooloose/syntastic'
+Plug 'rhysd/vim-clang-format'
+Plug 'ambv/black'
+
+" Must have utilities (commenting, git, etc.)
+Plug 'scrooloose/nerdcommenter'
+"Plug 'lervag/vimtex'
+
+" Make vim look nice
+Plug 'altercation/vim-colors-solarized'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown'] }
+
+" Initialize plugin system
+call plug#end()
+
+"""""""""""""""""""""""""""""
+" => Solarized Theming
+"""""""""""""""""""""""""""""
+syntax enable
+set background=dark
+colorscheme solarized
+set t_Co=256
+
+""""""""""""""""""""""""""""""
+" => Status line / Airline
+""""""""""""""""""""""""""""""
+" Always show the status line
+set laststatus=2
+
+" Format the status line
+" set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+
+let g:airline_solarized_gb='dark'
+" let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts=1
+
+""""""""""""""""""""""""""""""
+" => NERDTree
+""""""""""""""""""""""""""""""
+nnoremap <leader>nn :NERDTreeToggle<cr>
+nnoremap <leader>nb :NERDTreeFromBookmark<Space>
+nnoremap <leader>nf :NERDTreeFind<cr>
+
+let g:NERDTreeWinPos="left"
+let NERDTreeShowHidden=0
+let NERDTreeIgnore = ['\.pyc$']
+
+""""""""""""""""""""""""""""""
+" => FZF 
+""""""""""""""""""""""""""""""
+nnoremap <C-f> :Files<cr>
+
+""""""""""""""""""""""""""""""
+" => Syntastic 
+""""""""""""""""""""""""""""""
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_python_checkers = ['flake8', 'python3'] 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Spell checking
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Pressing ,ss will toggle and untoggle spell checking
+map <leader>ss :setlocal spell!<cr>
+
+" Turn on spellcheck automatically for these filetypes
+autocmd FileType rst,text,tex,md,markdown,gitcommit setlocal spell
+
+" Shortcuts using <leader>
+map <leader>sn ]s
+map <leader>sp [s
+map <leader>sa zg
+map <leader>s? z=
+
+""""""""""""""""""""""""""""""
+" => Edit Mappings
+""""""""""""""""""""""""""""""
+" Map leader to ,
+let mapleader = ","
+
+" Use control-A to select everything in a doc
+" map <C-a> <esc>ggVG<CR>
+
+"""""""""""""""""""""""""""""""
+" => Infrastructure
+"""""""""""""""""""""""""""""""
+" Show marker line at 80 chars
+set colorcolumn=80
+au BufRead,BufNewFile *.rs,*.tex,*.txt,*.md setlocal textwidth=80
+
+" Set numbers as defualt
+set nu
+
+" Use system clipboard as default register
+set clipboard=unnamedplus
+
+" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+autocmd BufWrite *.rs,*.coffee,*.yaml,*.yml,*.ini,*.rst,*.py,*.c,*.h,*.cpp,*.md,*.txt,*.tex :call DeleteTrailingWS()
+
+" Format .html and .js files on save with js-beautify
+autocmd BufWritePost *.html,*.js :!js-beautify -r %

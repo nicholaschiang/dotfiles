@@ -1,11 +1,13 @@
 [user]
-	email = nicholas.h.chiang@gmail.com
-	name = "Nicholas Chiang"
+  email = nicholas.h.chiang@gmail.com
+  name = "Nicholas Chiang"
 
 [core]
   editor = vim
 
 [alias]
+  a = commit --amend --no-edit
+  cm = commit -m
   co = checkout
   ec = config --global -e
   up = !git pull --rebase --prune $@ && git submodule update --init --recursive

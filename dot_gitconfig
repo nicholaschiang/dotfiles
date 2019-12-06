@@ -37,6 +37,7 @@
 
 [credential]
   helper = cache --timeout=3600
+  helper = netlify
 
 [rebase]
   autostash = true
@@ -49,3 +50,8 @@
 [pager]
   diff = diff-so-fancy | less --tabs=1,5 -RFX
   show = diff-so-fancy | less --tabs=1,5 -RFX
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

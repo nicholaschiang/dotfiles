@@ -18,10 +18,12 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'rhysd/vim-clang-format'
 Plug 'ambv/black'
+Plug 'dart-lang/dart-vim-plugin'
 
 " Must have utilities (commenting, git, etc.)
 Plug 'scrooloose/nerdcommenter'
 "Plug 'lervag/vimtex'
+"Plug 'vimwiki/vimwiki'
 
 " Make vim look nice
 Plug 'altercation/vim-colors-solarized'
@@ -30,6 +32,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown'] }
+Plug 'nicholaschiang/vim-firestore-rules'
 
 " Initialize plugin system
 call plug#end()
@@ -126,5 +129,18 @@ func! DeleteTrailingWS()
 endfunc
 autocmd BufWrite *.rs,*.coffee,*.yaml,*.yml,*.ini,*.rst,*.py,*.c,*.h,*.cpp,*.md,*.txt,*.tex :call DeleteTrailingWS()
 
-" Format .html and .js files on save with js-beautify
-autocmd BufWritePost *.html,*.js :!js-beautify -r %
+" format .html and .js files on save with js-beautify
+autocmd bufwritepost *.html,*.js :!js-beautify -r %
+
+" format .dart files on save with flutter
+autocmd bufwritepost *.dart :!flutter format %
+
+" format .py files on save with python-black
+autocmd bufwritepost *.py :!black %
+
+" don't create swap files
+set noswapfile
+
+" set markdown as default for vimwiki
+let g:vimwiki_list = [{'path': '~/repos/wiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]

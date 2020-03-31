@@ -15,7 +15,7 @@ Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
 
 " Format stuff
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 Plug 'rhysd/vim-clang-format'
 Plug 'ambv/black'
 Plug 'dart-lang/dart-vim-plugin'
@@ -25,17 +25,29 @@ Plug 'scrooloose/nerdcommenter'
 "Plug 'lervag/vimtex'
 "Plug 'vimwiki/vimwiki'
 
+" Syntax highlighting
+Plug 'HerringtonDarkholme/yats.vim'
+"Plug 'yuezk/vim-js'
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
+
 " Make vim look nice
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'npm install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown'] }
+"Plug 'prettier/vim-prettier', {
+  "\ 'do': 'npm install',
+  "\ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown'] }
 Plug 'nicholaschiang/vim-firestore-rules'
 
 " Initialize plugin system
 call plug#end()
+
+""""""""""""""""""""""""""""""
+" => Edit Mappings
+""""""""""""""""""""""""""""""
+" Map leader to ,
+let mapleader = ","
 
 """""""""""""""""""""""""""""
 " => Solarized Theming
@@ -44,6 +56,10 @@ syntax enable
 set background=dark
 colorscheme solarized
 set t_Co=256
+
+""""""""""""""""""""""""""""""
+" => Syntax highlighting 
+""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""
 " => Status line / Airline
@@ -99,14 +115,23 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 
-""""""""""""""""""""""""""""""
-" => Edit Mappings
-""""""""""""""""""""""""""""""
-" Map leader to ,
-let mapleader = ","
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Spell checking
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Pressing ,ss will toggle and untoggle spell checking
+map <leader>ss :setlocal spell!<cr>
 
-" Use control-A to select everything in a doc
-" map <C-a> <esc>ggVG<CR>
+" Turn on spellcheck automatically for these filetypes
+autocmd FileType mail,rst,text,tex,md,markdown,gitcommit setlocal spell
+
+" Shortcuts using <leader>
+map <leader>sn ]s
+map <leader>sp [s
+map <leader>sa zg
+map <leader>s? z=
+
+" See (https://github.com/altercation/vim-colors-solarized/issues/195)
+set t_Cs=
 
 """""""""""""""""""""""""""""""
 " => Infrastructure
@@ -130,7 +155,7 @@ endfunc
 autocmd BufWrite *.rs,*.coffee,*.yaml,*.yml,*.ini,*.rst,*.py,*.c,*.h,*.cpp,*.md,*.txt,*.tex :call DeleteTrailingWS()
 
 " format .html and .js files on save with js-beautify
-autocmd bufwritepost *.html,*.js :!js-beautify -r %
+"autocmd bufwritepost *.html,*.js :!js-beautify -r %
 
 " format .dart files on save with flutter
 autocmd bufwritepost *.dart :!flutter format %
@@ -140,6 +165,9 @@ autocmd bufwritepost *.py :!black %
 
 " don't create swap files
 set noswapfile
+
+nmap <leader>sw :set list!<cr>
+set listchars=tab:▸\ ,eol:¬
 
 " set markdown as default for vimwiki
 let g:vimwiki_list = [{'path': '~/repos/wiki/',

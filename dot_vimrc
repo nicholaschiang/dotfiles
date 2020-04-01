@@ -184,11 +184,11 @@ if $COLORTERM == 'gnome-terminal'
     set t_Co=256
 endif
 
+" Use Solarized dark as color scheme
 try
     colorscheme solarized 
 catch
 endtry
-
 set background=dark
 
 " Set extra options when running in GUI mode
@@ -261,9 +261,6 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" Shortcut to (find and) open a file in a new vsplit
-"map <Leader>v :vsplit <C-r>= :Files<cr>/
-
 " Pressing ,+ and ,- resizes width of vsplits 
 nnoremap <silent> <Leader>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
@@ -334,19 +331,6 @@ let g:airline#extensions#tabline#enabled = 1
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
-" Move a line of text using ALT+[jk] or Command+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
-if has("mac") || has("macunix")
-    nmap <D-j> <M-j>
-    nmap <D-k> <M-k>
-    vmap <D-j> <M-j>
-    vmap <D-k> <M-k>
-endif
-
 " Delete trailing white space on save, useful for some filetypes ;)
 fun! CleanExtraSpaces()
     let save_cursor = getpos(".")
@@ -388,14 +372,14 @@ set smartcase
 set hlsearch
 
 " Makes search act like search in modern browsers
-set incsearch 
+set incsearch
 
 
 """"""""""""""""""""""""""""""
 " => FZF 
 """"""""""""""""""""""""""""""
 " Pressing Ctrl-f searches for files w/ FZF (see https://bit.ly/3axGFzb) 
-nnoremap <C-f> :Files<cr>
+nnoremap <C-f> :FZF<cr>
 
 
 """"""""""""""""""""""""""""""
@@ -430,16 +414,6 @@ map <leader>s? z=
 " Fix underlining (see https://bit.ly/3bDZyRe)
 set t_Cs=
 
-" Use recommended defaults for Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
 
 """"""""""""""""""""""""""""""
 " => LSP for Vim 
@@ -447,6 +421,7 @@ let g:syntastic_check_on_wq = 0
 " Required for operations modifying multiple buffers like rename.
 set hidden
 
+" Use default LSP configuration
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
@@ -459,6 +434,31 @@ let g:LanguageClient_serverCommands = {
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+
+""""""""""""""""""""""""""""""
+" => Syntastic code linting 
+""""""""""""""""""""""""""""""
+" Always show error sign column
+set signcolumn=yes
+
+" Use the number column's background for Syntastic's error column
+highlight SignColumn ctermbg=Black ctermfg=Cyan guibg=black guifg=cyan
+highlight SyntasticErrorSign ctermbg=Black ctermfg=Red guibg=black guifg=red
+highlight SyntasticWarningSign ctermbg=Black guibg=black
+
+" Always populate error location list (but don't auto-open it)
+let g:syntastic_always_populate_loc_list = 1
+
+" Check for errors when opening files
+let g:syntastic_check_on_open = 1
+
+" Don't check for errors when closing files
+let g:syntastic_check_on_wq = 0
+
+" Use Lynt for JavaScript and TypeScript files
+let g:syntastic_javascript_checkers = ['lynt']
+let g:syntastic_typescript_checkers = ['lynt']
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

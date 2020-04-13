@@ -37,7 +37,6 @@
 
 [credential]
   helper = cache --timeout=3600
-  helper = netlify
 
 [rebase]
   autostash = true

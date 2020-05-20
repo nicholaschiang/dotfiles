@@ -65,8 +65,8 @@ Plug 'scrooloose/nerdcommenter'
 " Syntax highlighting
 Plug 'sheerun/vim-polyglot'
 
-" Automatic code linting w/ Syntastic
-Plug 'vim-syntastic/syntastic'
+" Automatic code linting w/ ALE 
+Plug 'dense-analysis/ale'
 
 " Use git from w/in Vim
 Plug 'tpope/vim-fugitive'
@@ -236,7 +236,7 @@ set wrap "Wrap lines
 set colorcolumn=80
 
 " Wrap text at 80 characters for these filetypes 
-au BufRead,BufNewFile *.rs,*.tex,*.txt,*.md setlocal textwidth=80
+au BufRead,BufNewFile *.rs,*.txt,*.md setlocal textwidth=80
 
 
 """"""""""""""""""""""""""""""
@@ -433,28 +433,21 @@ nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 
 """"""""""""""""""""""""""""""
-" => Syntastic code linting 
+" => ALE code linting 
 """"""""""""""""""""""""""""""
 " Always show error sign column
 set signcolumn=yes
+let g:ale_sign_column_always = 1
 
 " Use the number column's background for Syntastic's error column
 highlight SignColumn ctermbg=Black ctermfg=Cyan guibg=black guifg=cyan
-highlight SyntasticErrorSign ctermbg=Black ctermfg=Red guibg=black guifg=red
-highlight SyntasticWarningSign ctermbg=Black guibg=black
+highlight ALEErrorSign ctermbg=Black ctermfg=Red guibg=black guifg=red
+highlight ALEWarningSign ctermbg=Black guibg=black
 
-" Always populate error location list (but don't auto-open it)
-let g:syntastic_always_populate_loc_list = 1
-
-" Check for errors when opening files
-let g:syntastic_check_on_open = 1
-
-" Don't check for errors when closing files
-let g:syntastic_check_on_wq = 0
-
-" Use Lynt for JavaScript and TypeScript files
-let g:syntastic_javascript_checkers = ['lynt']
-let g:syntastic_typescript_checkers = ['lynt']
+" Only use ESLint for Typescript
+let g:ale_linters = {
+      \ 'typescriptreact': ['eslint'],
+      \ }
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

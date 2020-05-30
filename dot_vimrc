@@ -444,11 +444,6 @@ highlight SignColumn ctermbg=Black ctermfg=Cyan guibg=black guifg=cyan
 highlight ALEErrorSign ctermbg=Black ctermfg=Red guibg=black guifg=red
 highlight ALEWarningSign ctermbg=Black guibg=black
 
-" Only use ESLint for Typescript
-let g:ale_linters = {
-      \ 'typescriptreact': ['eslint'],
-      \ }
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc

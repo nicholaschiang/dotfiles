@@ -439,6 +439,11 @@ nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 set signcolumn=yes
 let g:ale_sign_column_always = 1
 
+" Disable continuous linting (CPU can't handle it)
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_enter = 0
+
 " Use the number column's background for Syntastic's error column
 highlight SignColumn ctermbg=Black ctermfg=Cyan guibg=black guifg=cyan
 highlight ALEErrorSign ctermbg=Black ctermfg=Red guibg=black guifg=red

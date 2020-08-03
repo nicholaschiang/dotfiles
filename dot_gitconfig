@@ -6,6 +6,7 @@
   editor = vim
 
 [alias]
+  s = status
   a = commit --amend --no-edit
   cm = commit -m
   co = checkout

@@ -12,7 +12,6 @@ ubuntu-install-packages:
 		build-essential \
 		git \
 		git-lfs \
-		diff-so-fancy \
 		unattended-upgrades \
 		units \
 		vim-gtk3 \
@@ -24,10 +23,6 @@ ubuntu-install-packages:
 
 ubuntu-install-node:
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-	source ~/.bashrc
-	nvm i 12.18.3
-	npm i -g npm
-	npm i -g yarn
 
 ubuntu-install-chezmoi:
 	curl --proto '=https' --tlsv1.2 -sSLO https://github.com/twpayne/chezmoi/releases/download/v1.7.15/chezmoi_1.7.15_linux_amd64.deb

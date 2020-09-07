@@ -44,6 +44,11 @@ ubuntu-install-git-sizer:
 	install -m755 tmp-git-sizer/git-sizer ~/.local/bin/
 	rm -r git-sizer-1.3.0-linux-amd64.zip tmp-git-sizer
 
+ubuntu-install-magick:
+	curl --proto '=https' --tlsv1.2 -sSO https://imagemagick.org/download/binaries/magick
+	install -m755 magick ~/.local/bin/
+	rm magick
+
 ubuntu-install-latex:
 	sudo apt-get install -y texlive-full latexmk
 

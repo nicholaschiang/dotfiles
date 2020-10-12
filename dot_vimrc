@@ -64,6 +64,7 @@ Plug 'scrooloose/nerdcommenter'
 
 " Syntax highlighting
 Plug 'sheerun/vim-polyglot'
+Plug 'alampros/vim-styled-jsx'
 
 " Automatic code linting w/ ALE 
 Plug 'dense-analysis/ale'
@@ -241,6 +242,8 @@ set colorcolumn=80
 " Wrap text at 80 characters for these filetypes 
 au BufRead,BufNewFile *.rs,*.txt,*.md setlocal textwidth=80
 
+" Don't auto indent in LaTex files
+autocmd FileType tex setlocal noai nocin nosi inde= 
 
 """"""""""""""""""""""""""""""
 " => Visual mode related

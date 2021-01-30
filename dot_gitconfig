@@ -4,11 +4,21 @@
 
 [core]
   editor = vim
+  pager = delta
+
+[delta]
+  syntax-theme = Solarized (dark)
+  line-numbers = true
+  
+[interactive]
+  diffFilter = delta --color-only
 
 [alias]
   s = status
   a = commit --amend --no-edit
   cm = commit -m
+  find = log --pretty=\"format:%Cgreen%H %Cblue%s\" --name-status --grep
+  dfind = log --graph --decorate --stat --date=iso --format=fuller --name-status --grep
   co = checkout
   ec = config --global -e
   up = !git pull --rebase --prune $@ && git submodule update --init --recursive
@@ -23,11 +33,15 @@
   glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
   di = diff --color-words
   dic = diff --color-words=.
-  stats = shortlog -sn --no-merges
-  dlog = log --graph --all --decorate --stat --date=iso
+  stats = shortlog -sen --no-merges
+  dlog = log --graph --decorate --stat --date=iso --format=fuller
+  ddlog = log --graph --decorate --stat --date=iso --format=fuller -p
   tlog = tag -l -n10
+  hist = log --follow -p
   pf = push --force-with-lease
-  squash-all = "!f(){ git reset $(git commit-tree HEAD^{tree} -m \"${1:-A new start}\");};f"
+  sba = "!f() { git subtree add --prefix $1 $2 master --squash; }; f"
+  sbu = "!f() { git subtree pull --prefix $1 $2 master --squash; }; f"
+  sbp = "!f() { git subtree push --prefix $1 $2 $3; }; f"
 
 [merge]
   ff = only
@@ -37,7 +51,7 @@
   followTags = true
 
 [credential]
-  helper = cache --timeout=3600
+  helper = cache --timeout=7200
 
 [rebase]
   autostash = true
@@ -47,9 +61,6 @@
   changed = yellow bold
   untracked = red bold
 
-[pager]
-  diff = diff-so-fancy | less --tabs=1,5 -RFX
-  show = diff-so-fancy | less --tabs=1,5 -RFX
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

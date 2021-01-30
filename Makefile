@@ -10,6 +10,7 @@ ubuntu-install-packages:
 	sudo apt-get install -y \
 		curl \
 		build-essential \
+		ripgrep \
 		git \
 		git-lfs \
 		unattended-upgrades \

@@ -10,7 +10,7 @@ ubuntu-install-packages:
 	sudo apt-get install -y \
 		curl \
 		build-essential \
-		ripgrep \
+		checkinstall \
 		git \
 		git-lfs \
 		unattended-upgrades \
@@ -20,10 +20,12 @@ ubuntu-install-packages:
 		mosh \
 		tmux \
 		htop \
-		gnupg2
+		gnupg2 \
+		ripgrep \
+		imagemagick
 
 ubuntu-install-node:
-	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 
 ubuntu-install-chezmoi:
 	curl --proto '=https' --tlsv1.2 -sSLO https://github.com/twpayne/chezmoi/releases/download/v1.7.15/chezmoi_1.7.15_linux_amd64.deb
@@ -39,29 +41,20 @@ ubuntu-install-prettyping:
 	install	-m755 prettyping ~/.local/bin/
 	rm prettyping
 
+ubuntu-install-git-delta:
+	curl --proto '=https' --tlsv1.2 -sSLO https://github.com/dandavison/delta/releases/download/0.5.1/git-delta_0.5.1_amd64.deb
+	sudo dpkg -i git-delta_0.5.1_amd64.deb
+	sudo apt-get install -f
+	rm git-delta_0.5.1_amd64.deb
+
 ubuntu-install-git-sizer:
 	curl --proto '=https' --tlsv1.2 -sSLO https://github.com/github/git-sizer/releases/download/v1.3.0/git-sizer-1.3.0-linux-amd64.zip
 	unzip -o git-sizer-1.3.0-linux-amd64.zip -d tmp-git-sizer
 	install -m755 tmp-git-sizer/git-sizer ~/.local/bin/
 	rm -r git-sizer-1.3.0-linux-amd64.zip tmp-git-sizer
 
-ubuntu-install-magick:
-	curl --proto '=https' --tlsv1.2 -sSO https://imagemagick.org/download/binaries/magick
-	install -m755 magick ~/.local/bin/
-	rm magick
-
 ubuntu-install-latex:
 	sudo apt-get install -y texlive-full latexmk
-
-ubuntu-install-mendeley:
-	curl --proto '=https' --tlsv1.2 -sSL https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest -o mendeley.deb
-	sudo dpkg -i mendeley.deb
-	rm mendeley.deb
-
-ubuntu-install-alacritty:
-	curl --proto '=https' --tlsv1.2 -sSL https://github.com/jwilm/alacritty/releases/download/v0.4.3/Alacritty-v0.4.3-ubuntu_18_04_amd64.deb -o alacritty.deb
-	sudo dpkg -i alacritty.deb
-	rm alacritty.deb
 
 ubuntu-install-google-chrome:
 	wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -

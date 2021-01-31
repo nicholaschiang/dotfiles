@@ -24,6 +24,20 @@ ubuntu-install-packages:
 		ripgrep \
 		imagemagick
 
+ubuntu-install-cypress:
+	sudo apt-get install -y \
+		libgtk2.0-0 \
+		libgtk-3-0 \
+		libgbm-dev \
+		libnotify-dev \
+		libgconf-2-4 \
+		libnss3 \
+		libxss1 \
+		libasound2 \
+		libxtst6 \
+		xauth \
+		xvfb
+
 ubuntu-install-node:
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 

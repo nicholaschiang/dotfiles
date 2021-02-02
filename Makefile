@@ -22,7 +22,10 @@ ubuntu-install-packages:
 		htop \
 		gnupg2 \
 		ripgrep \
-		imagemagick
+		imagemagick \
+		ffmpeg \
+		nmap \
+		cpulimit
 
 ubuntu-install-cypress:
 	sudo apt-get install -y \
@@ -37,6 +40,21 @@ ubuntu-install-cypress:
 		libxtst6 \
 		xauth \
 		xvfb
+
+ubuntu-install-bettercap:
+	sudo apt-get install -y libpcap libusb-1.0-0 libnetfilter-queue
+	curl --proto '=https' --tlsv1.2 -sSLO https://github.com/bettercap/bettercap/releases/download/v2.29/bettercap_linux_amd64_v2.29.zip
+	unzip -o bettercap_linux_amd64_v2.29.zip -d tmp-bettercap
+	install -m755 tmp-bettercap/bettercap ~/.local/bin/
+	rm -r bettercap_linux_amd64_v2.29.zip tmp-bettercap
+
+ubuntu-install-adb:
+	sudo apt-get install -y \
+		android-tools-adb \
+		android-tools-fastboot
+
+ubuntu-install-java:
+	sudo apt-get install -y openjdk-14-jre-headless
 
 ubuntu-install-node:
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash

@@ -2,10 +2,16 @@
 
 Dotfiles managed with [`chezmoi`](https://github.com/twpayne/chezmoi).
 
-Install with:
+Install `chezmoi` with:
 
 ```
-$ chezmoi init https://github.com/nicholaschiang/dotfiles.git
+$ sh -c "$(curl -fsLS git.io/chezmoi)"
+```
+
+Install and apply configuration with:
+
+```
+$ ./bin/chezmoi init https://github.com/nicholaschiang/dotfiles.git --apply
 ```
 
 ## Dependencies

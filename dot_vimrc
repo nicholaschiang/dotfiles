@@ -184,6 +184,10 @@ if $COLORTERM == 'gnome-terminal'
     set t_Co=256
 endif
 
+" Prevent redraw time exceptions with TypeScript
+" See: https://jameschambers.co.uk/vim-typescript-slow
+set re=0
+
 " Use Solarized dark as color scheme
 try
     colorscheme solarized 

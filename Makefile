@@ -58,6 +58,8 @@ java:
 
 node:
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+	source ~/.bashrc
+	nvm i 12.18.3
 
 chezmoi:
 	curl --proto '=https' --tlsv1.2 -sSLO https://github.com/twpayne/chezmoi/releases/download/v1.7.15/chezmoi_1.7.15_linux_amd64.deb

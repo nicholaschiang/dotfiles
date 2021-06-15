@@ -134,6 +134,11 @@ alias tmux='tmux -u'  # to get rid of unicode rendering problem
 # Typing `count` shows number of files
 alias count='ls -1 | wc -l'
 
+# Find and replace across multiple files
+replace() {
+  find . -type d -name node_modules -prune -false -o -type f -readable -writable -exec sed -i "$1" {} \;
+}
+
 # Install Ruby Gems to ~/gems
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"

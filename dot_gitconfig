@@ -39,6 +39,7 @@
   tlog = tag -l -n10
   hist = log --follow -p
   pf = push --force-with-lease
+  upstream = !git push -u origin HEAD
   sba = "!f() { git subtree add --prefix $1 $2 master --squash; }; f"
   sbu = "!f() { git subtree pull --prefix $1 $2 master --squash; }; f"
   sbp = "!f() { git subtree push --prefix $1 $2 $3; }; f"

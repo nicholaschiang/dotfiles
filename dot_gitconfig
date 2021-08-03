@@ -17,6 +17,7 @@
   s = status
   a = commit --amend --no-edit
   cm = commit -m
+  au = add -u
   find = log --pretty=\"format:%Cgreen%H %Cblue%s\" --name-status --grep
   dfind = log --graph --decorate --stat --date=iso --format=fuller --name-status --grep
   co = checkout

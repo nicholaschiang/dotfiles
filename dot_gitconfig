@@ -39,6 +39,7 @@
   ddlog = log --graph --decorate --stat --date=iso --format=fuller -p
   tlog = tag -l -n10
   hist = log --follow -p
+  p = push
   pf = push --force-with-lease
   upstream = !git push -u origin HEAD
   sba = "!f() { git subtree add --prefix $1 $2 master --squash; }; f"

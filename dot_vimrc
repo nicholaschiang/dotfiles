@@ -53,12 +53,6 @@ Plug 'vim-airline/vim-airline-themes'
 " Epic status line for Tmux too
 Plug 'edkolev/tmuxline.vim'
 
-" Language server protocal (LSP) for Vim
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
 " Easy block commenting
 Plug 'scrooloose/nerdcommenter'
 
@@ -101,7 +95,7 @@ let mapleader = ','
 nmap <leader>w :w!<cr>
 
 " Use system clipboard as default register
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 " Use ,sw to show hidden characters (line endings, tabs, etc)
 nmap <leader>sw :set list!<cr>
@@ -387,6 +381,8 @@ set incsearch
 " Pressing Ctrl-f searches for files w/ FZF (see https://bit.ly/3axGFzb) 
 nnoremap <C-f> :FZF<cr>
 
+" Window using a Vim command (see https://git.io/Jim5u)
+let g:fzf_layout = { 'down': '25%' }
 
 """"""""""""""""""""""""""""""
 " => NERDTree
@@ -422,27 +418,6 @@ set t_Cs=
 
 
 """"""""""""""""""""""""""""""
-" => LSP for Vim 
-""""""""""""""""""""""""""""""
-" Required for operations modifying multiple buffers like rename.
-set hidden
-
-" Use default LSP configuration
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-    \ 'python': ['/usr/local/bin/pyls'],
-    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
-    \ }
-
-" Configure useful shortcuts
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
-
-""""""""""""""""""""""""""""""
 " => ALE code linting 
 """"""""""""""""""""""""""""""
 " Always show error sign column
@@ -450,9 +425,9 @@ set signcolumn=yes
 let g:ale_sign_column_always = 1
 
 " Disable continuous linting (CPU can't handle it)
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_enter = 0
+" let g:ale_lint_on_text_changed = 'never'
+" let g:ale_lint_on_insert_leave = 0
+" let g:ale_lint_on_enter = 0
 
 " Use the number column's background for Syntastic's error column
 highlight SignColumn ctermbg=Black ctermfg=Cyan guibg=black guifg=cyan

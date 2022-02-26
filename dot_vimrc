@@ -34,7 +34,7 @@
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 
 " Solarized theming for Vim 
 Plug 'altercation/vim-colors-solarized'
@@ -95,7 +95,7 @@ let mapleader = ','
 nmap <leader>w :w!<cr>
 
 " Use system clipboard as default register
-set clipboard^=unnamedplus
+set clipboard+=unnamedplus
 
 " Use ,sw to show hidden characters (line endings, tabs, etc)
 nmap <leader>sw :set list!<cr>
@@ -165,6 +165,9 @@ endif
 
 " Add a bit extra margin to the left
 set foldcolumn=1
+
+" Preview find and replace results during search
+set inccommand=nosplit
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

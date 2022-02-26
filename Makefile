@@ -15,7 +15,7 @@ basic:
 		git-lfs \
 		unattended-upgrades \
 		units \
-		vim-gtk3 \
+		neovim \
 		pass \
 		mosh \
 		tmux \
@@ -26,6 +26,8 @@ basic:
 		ffmpeg \
 		nmap \
 		cpulimit
+	sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 cypress:
 	sudo apt-get install -y \

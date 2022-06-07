@@ -13,6 +13,10 @@
 [interactive]
   diffFilter = delta --color-only
 
+[commit]
+    gpgsign = false
+    template = ~/.config/git/.git-commit-template
+
 [alias]
   s = status
   a = commit --amend --no-edit

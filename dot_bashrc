@@ -167,5 +167,8 @@ export NVM_DIR="$HOME/.nvm"
 # Add Fly.io CLI to path
 PATH="$HOME/.fly/bin:$PATH"
 
+# Add Poetry (Python package manager) to path
+PATH="$HOME/.poetry/bin:$PATH"
+
 # Added by travis gem
 [ -f /home/nchiang/.travis/travis.sh ] && source /home/nchiang/.travis/travis.sh

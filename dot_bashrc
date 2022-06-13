@@ -170,5 +170,8 @@ PATH="$HOME/.fly/bin:$PATH"
 # Add Poetry (Python package manager) to path
 PATH="$HOME/.poetry/bin:$PATH"
 
+# Use Neovim instead of VIM
+alias vim=nvim
+
 # Added by travis gem
 [ -f /home/nchiang/.travis/travis.sh ] && source /home/nchiang/.travis/travis.sh

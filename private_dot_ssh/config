@@ -3,3 +3,11 @@ Host watchog
     User nchiang
     ProxyJump sing.stanford.edu
     LocalForward 8890 127.0.0.1:8890
+
+Host atlantic
+    ForwardX11 yes
+    ForwardX11Trusted yes
+
+Host pacific 
+    ForwardX11 yes
+    ForwardX11Trusted yes

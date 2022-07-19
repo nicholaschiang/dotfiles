@@ -169,9 +169,17 @@ PATH="$HOME/.fly/bin:$PATH"
 
 # Add Poetry (Python package manager) to path
 PATH="$HOME/.poetry/bin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
 
 # Use Neovim instead of VIM
 alias vim=nvim
+alias python=python3.10
 
 # Added by travis gem
 [ -f /home/nchiang/.travis/travis.sh ] && source /home/nchiang/.travis/travis.sh
+. "$HOME/.cargo/env"
+
+# Add pyenv (python version manager) to path 
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"

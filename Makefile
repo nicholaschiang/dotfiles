@@ -55,6 +55,9 @@ adb:
 		android-tools-adb \
 		android-tools-fastboot
 
+pyenv:
+	curl https://pyenv.run | bash
+
 java:
 	sudo apt-get install -y openjdk-14-jre-headless
 

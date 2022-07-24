@@ -69,6 +69,7 @@ Plug 'tpope/vim-fugitive'
 
 " Use Conquer of Completion for VSCode-like features
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
 
 " Automatic Prettier formatting
 Plug 'sbdchd/neoformat'
@@ -481,13 +482,13 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
 " Prettier auto-format on close. See: https://prettier.io/docs/en/vim.html
 let g:neoformat_try_node_exe = 1
-autocmd BufWritePre,TextChanged,InsertLeave *.js Neoformat
+" autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx Neoformat
+
+" Formatting selected code.
+xmap <leader>f :Neoformat<cr> 
+nmap <leader>f :Neoformat<cr>
 
 
 """"""""""""""""""""""""""""""

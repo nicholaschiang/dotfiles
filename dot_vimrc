@@ -175,7 +175,7 @@ endif
 set foldcolumn=1
 
 " Preview find and replace results during search
-set inccommand=nosplit
+" set inccommand=nosplit
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

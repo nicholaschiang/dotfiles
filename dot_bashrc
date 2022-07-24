@@ -91,7 +91,6 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias open="xdg-open &>/dev/null"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -173,11 +172,6 @@ PATH="$HOME/.local/bin:$PATH"
 
 # Use Neovim instead of VIM
 alias vim=nvim
-alias python=python3.10
-
-# Added by travis gem
-[ -f /home/nchiang/.travis/travis.sh ] && source /home/nchiang/.travis/travis.sh
-. "$HOME/.cargo/env"
 
 # Add pyenv (python version manager) to path 
 export PYENV_ROOT="$HOME/.pyenv"

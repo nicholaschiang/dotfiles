@@ -103,7 +103,7 @@ let mapleader = ','
 nmap <leader>w :w!<cr>
 
 " Use system clipboard as default register
-set clipboard+=unnamedplus
+set clipboard+=unnamed
 
 " Use ,sw to show hidden characters (line endings, tabs, etc)
 nmap <leader>sw :set list!<cr>

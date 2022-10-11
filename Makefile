@@ -55,8 +55,14 @@ adb:
 		android-tools-adb \
 		android-tools-fastboot
 
+rust:
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 pyenv:
 	curl https://pyenv.run | bash
+
+poetry:
+	curl -sSL https://install.python-poetry.org | python3 -
 
 java:
 	sudo apt-get install -y openjdk-14-jre-headless

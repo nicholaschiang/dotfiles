@@ -3,7 +3,10 @@
   name = "Nicholas Chiang"
 
 [core]
-  editor = vim
+  editor = nvim
+  attributesfile = ~/.gitattributes
+  commitGraph = true
+  abbrev = 12
   pager = delta
 
 [delta]

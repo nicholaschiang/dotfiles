@@ -31,10 +31,17 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins via vim-plug 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Auto-install vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
-call plug#begin()
+call plug#begin('~/.vim/plugged')
 
 " Solarized theming for Vim 
 Plug 'altercation/vim-colors-solarized'
@@ -60,6 +67,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
 Plug 'alampros/vim-styled-jsx'
 Plug 'pantharshit00/vim-prisma'
+Plug 'evanleck/vim-svelte'
 
 " Automatic code linting w/ ALE 
 Plug 'dense-analysis/ale'
@@ -73,6 +81,9 @@ Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build'
 
 " Automatic Prettier formatting
 Plug 'sbdchd/neoformat'
+
+" GitHub Copilot (powered by OpenAI Codex)
+Plug 'github/copilot.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -183,6 +194,9 @@ set foldcolumn=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable 
+
+" Enable Svelte TypeScript support
+let g:svelte_preprocessors = ['typescript']
 
 " Enable 256 colors palette in Gnome Terminal
 if $COLORTERM == 'gnome-terminal'
@@ -489,6 +503,10 @@ let g:neoformat_try_node_exe = 1
 " Formatting selected code.
 xmap <leader>f :Neoformat<cr> 
 nmap <leader>f :Neoformat<cr>
+
+" Use the number column's background for Coc's error column 
+highlight CocErrorSign ctermbg=Black ctermfg=Red guibg=black guifg=red
+highlight CocWarningSign ctermbg=Black guibg=black
 
 
 """"""""""""""""""""""""""""""

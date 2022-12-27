@@ -41,7 +41,7 @@ endif
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 
 " Solarized theming for Vim 
 Plug 'altercation/vim-colors-solarized'
@@ -460,16 +460,20 @@ set signcolumn=yes
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"inoremap <silent><expr> <TAB>
+      "\ pumvisible() ? "\<C-n>" :
+      "\ <SID>check_back_space() ? "\<TAB>" :
+      "\ coc#refresh()
+"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+"function! s:check_back_space() abort
+  "let col = col('.') - 1
+  "return !col || getline('.')[col - 1]  =~# '\s'
+"endfunction
+
+" Use ctrl-space to trigger Coc completion (tab is already used by Copilot).
+" NOTE: Use command ':verbose imap <c-space>' to make sure <c-space> is not
+inoremap <silent><expr> <C-space> coc#pum#visible() ? coc#pum#confirm() : "\<C-space>"
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -504,9 +508,16 @@ let g:neoformat_try_node_exe = 1
 xmap <leader>f :Neoformat<cr> 
 nmap <leader>f :Neoformat<cr>
 
+" Store global Coc config in the ~/.vim directory
+let g:coc_config_home = '~/.vim'
+
 " Use the number column's background for Coc's error column 
 highlight CocErrorSign ctermbg=Black ctermfg=Red guibg=black guifg=red
 highlight CocWarningSign ctermbg=Black guibg=black
+highlight CocHintSign ctermbg=Black guibg=black
+highlight CocSearch ctermbg=Black ctermfg=Cyan guibg=black guifg=cyan
+highlight CocMenuSel ctermbg=Green ctermfg=Cyan guibg=green guifg=cyan
+highlight CocFloating ctermbg=Black ctermfg=Green guibg=black guifg=Green
 
 
 """"""""""""""""""""""""""""""
@@ -520,9 +531,9 @@ let g:ale_sign_column_always = 1
 let g:ale_linters_ignore = { 'typescriptreact': ['deno'], 'typescript': ['deno'], 'javascript': ['deno'] }
 
 " Disable continuous linting (CPU can't handle it)
-" let g:ale_lint_on_text_changed = 'never'
-" let g:ale_lint_on_insert_leave = 0
-" let g:ale_lint_on_enter = 0
+"let g:ale_lint_on_text_changed = 'never'
+"let g:ale_lint_on_insert_leave = 0
+"let g:ale_lint_on_enter = 0
 
 " Use the number column's background for Syntastic's error column
 highlight SignColumn ctermbg=Black ctermfg=Cyan guibg=black guifg=cyan

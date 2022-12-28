@@ -11,3 +11,7 @@ Host atlantic
 Host pacific 
     ForwardX11 yes
     ForwardX11Trusted yes
+
+Host arctic 
+    ForwardX11 yes
+    ForwardX11Trusted yes

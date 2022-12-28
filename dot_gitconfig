@@ -17,8 +17,8 @@
   diffFilter = delta --color-only
 
 [commit]
-    gpgsign = false
-    template = ~/.config/git/.git-commit-template
+  gpgsign = false
+  template = ~/.config/git/.git-commit-template
 
 [alias]
   s = status

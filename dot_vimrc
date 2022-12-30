@@ -350,6 +350,9 @@ let g:airline_solarized_gb='dark'
 " Enable Airline's smarter tab line
 let g:airline#extensions#tabline#enabled = 1
 
+" Enable Airline ALE error display 
+let g:airline#extensions#ale#enabled = 1
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
@@ -529,6 +532,9 @@ let g:ale_sign_column_always = 1
 
 " Only use ESLint for Typescript files
 let g:ale_linters_ignore = { 'typescriptreact': ['deno'], 'typescript': ['deno'], 'javascript': ['deno'] }
+
+" Use Coc for autocompletion instead of ALE
+let g:ale_disable_lsp = 1
 
 " Disable continuous linting (CPU can't handle it)
 "let g:ale_lint_on_text_changed = 'never'

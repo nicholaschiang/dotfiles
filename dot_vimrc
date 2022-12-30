@@ -447,6 +447,15 @@ set t_Cs=
 
 
 """"""""""""""""""""""""""""""
+" => GitHub Copilot 
+""""""""""""""""""""""""""""""
+" Use Ctrl-J to trigger Copilot autocomplete instead of <Tab>
+" For now, I find the autocomplete provided by Coc to be more useful and faster
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+
+
+""""""""""""""""""""""""""""""
 " => coc.nvim
 """"""""""""""""""""""""""""""
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
@@ -460,23 +469,42 @@ set shortmess+=c
 " diagnostics appear/become resolved.
 set signcolumn=yes
 
-" Use tab for trigger completion with characters ahead and navigate.
+" Use tab for trigger completion with characters ahead and navigate
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-"inoremap <silent><expr> <TAB>
-      "\ pumvisible() ? "\<C-n>" :
-      "\ <SID>check_back_space() ? "\<TAB>" :
-      "\ coc#refresh()
-"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" other plugin before putting this into your config
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-"function! s:check_back_space() abort
-  "let col = col('.') - 1
-  "return !col || getline('.')[col - 1]  =~# '\s'
-"endfunction
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
 " Use ctrl-space to trigger Coc completion (tab is already used by Copilot).
 " NOTE: Use command ':verbose imap <c-space>' to make sure <c-space> is not
-inoremap <silent><expr> <C-space> coc#pum#visible() ? coc#pum#confirm() : "\<C-space>"
+"inoremap <silent><expr> <C-space> coc#pum#visible() ? coc#pum#confirm() : "\<C-space>"
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -505,7 +533,7 @@ nmap <leader>rn <Plug>(coc-rename)
 
 " Prettier auto-format on close. See: https://prettier.io/docs/en/vim.html
 let g:neoformat_try_node_exe = 1
-" autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx Neoformat
+"autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx Neoformat
 
 " Formatting selected code.
 xmap <leader>f :Neoformat<cr> 

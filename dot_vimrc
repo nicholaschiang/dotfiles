@@ -353,6 +353,9 @@ let g:airline#extensions#tabline#enabled = 1
 " Enable Airline ALE error display 
 let g:airline#extensions#ale#enabled = 1
 
+" Enable Airline Coc error display 
+let g:airline#extensions#coc#enabled = 1
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
@@ -563,6 +566,9 @@ let g:ale_linters_ignore = { 'typescriptreact': ['deno'], 'typescript': ['deno']
 
 " Use Coc for autocompletion instead of ALE
 let g:ale_disable_lsp = 1
+
+" Don't show errors in virtual text (it becomes overwhelming when editing)
+let g:ale_virtualtext_cursor = 0
 
 " Disable continuous linting (CPU can't handle it)
 "let g:ale_lint_on_text_changed = 'never'

@@ -173,6 +173,7 @@ PATH="$HOME/.local/bin:$PATH"
 
 # Use Neovim instead of VIM
 alias vim=nvim
+alias vimdiff='nvim -d'
 
 # Add pyenv (python version manager) to path 
 export PYENV_ROOT="$HOME/.pyenv"
@@ -181,3 +182,5 @@ eval "$(pyenv init -)"
 
 # Autocomplete for git branch names
 source ~/.git-completion.bash
+
+source /Users/nchiang/.docker/init-bash.sh || true # Added by Docker Desktop

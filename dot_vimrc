@@ -263,7 +263,7 @@ set wrap "Wrap lines
 set colorcolumn=80
 
 " Wrap text at 80 characters for these filetypes 
-au BufRead,BufNewFile *.rs,*.txt,*.md setlocal textwidth=80
+au BufRead,BufNewFile *.rs,*.txt setlocal textwidth=80
 
 " Don't auto indent in LaTex or Markdown files
 autocmd FileType tex setlocal noai nocin nosi inde= 
@@ -574,6 +574,32 @@ let g:ale_virtualtext_cursor = 0
 "let g:ale_lint_on_text_changed = 'never'
 "let g:ale_lint_on_insert_leave = 0
 "let g:ale_lint_on_enter = 0
+
+" Use locally installed Yarn PnP linters
+let g:ale_completion_enabled = 1
+let g:ale_fix_on_save = 1
+let g:ale_fixers = { 
+      \ 'javascript': ['eslint', 'prettier'],
+      \ 'typescript': ['eslint', 'prettier'],
+      \ 'typescriptreact': ['eslint', 'prettier'] 
+      \ }
+let g:ale_linters = { 
+      \ 'javascript': ['eslint', 'flow-language-server'],
+      \ 'typescript': ['eslint', 'tsserver'],
+      \ 'typescriptreact': ['eslint', 'tsserver'] 
+      \ }
+
+let s:sdks = finddir('.yarn/sdks', ';')
+if !empty(s:sdks)
+  let g:ale_typescript_eslint_use_global = 1
+  let g:ale_typescript_eslint_executable = s:sdks . '/eslint/bin/eslint.js'
+  let g:ale_typescript_flow_ls_use_global = 1
+  let g:ale_typescript_flow_ls_executable = s:sdks . '/flow-bin/cli.js'
+  let g:ale_typescript_prettier_use_global = 1
+  let g:ale_typescript_prettier_executable = s:sdks . '/prettier/index.js'
+  let g:ale_typescript_tsserver_use_global = 1
+  let g:ale_typescript_tsserver_executable = s:sdks . '/typescript/bin/tsserver'
+endif
 
 " Use the number column's background for Syntastic's error column
 highlight SignColumn ctermbg=Black ctermfg=Cyan guibg=black guifg=cyan

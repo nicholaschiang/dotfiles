@@ -79,9 +79,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
 
-" Automatic Prettier formatting
-Plug 'sbdchd/neoformat'
-
 " GitHub Copilot (powered by OpenAI Codex)
 Plug 'github/copilot.vim'
 
@@ -534,14 +531,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
-" Prettier auto-format on close. See: https://prettier.io/docs/en/vim.html
-let g:neoformat_try_node_exe = 1
-"autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx Neoformat
-
-" Formatting selected code.
-xmap <leader>f :Neoformat<cr> 
-nmap <leader>f :Neoformat<cr>
-
 " Store global Coc config in the ~/.vim directory
 let g:coc_config_home = '~/.vim'
 
@@ -575,9 +564,13 @@ let g:ale_virtualtext_cursor = 0
 "let g:ale_lint_on_insert_leave = 0
 "let g:ale_lint_on_enter = 0
 
+" Autofix and format (using ESLint and Prettier) current buffer
+xmap <leader>f :ALEFix<cr> 
+nmap <leader>f :ALEFix<cr>
+
 " Use locally installed Yarn PnP linters
 let g:ale_completion_enabled = 1
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 let g:ale_fixers = { 
       \ 'javascript': ['eslint', 'prettier'],
       \ 'typescript': ['eslint', 'prettier'],
@@ -626,6 +619,31 @@ map <leader>pp :setlocal paste!<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Replace all instances of utf problem characters with their ascii
+" equivalents (see https://stackoverflow.com/a/17311352 for details).
+function! ReplaceUTF() abort
+  let l:patterns = {}
+  let l:patterns['\%u2013'] = '-'
+  let l:patterns['\%u2014'] = '-' 
+  let l:patterns['\%u2015'] = '-'
+  let l:patterns['\%u2017'] = '_'
+  let l:patterns['\%u2018'] = "'"
+  let l:patterns['\%u2019'] = "'"
+  let l:patterns['\%u201a'] = ','
+  let l:patterns['\%u201b'] = "'"
+  let l:patterns['\%u201c'] = '"'
+  let l:patterns['\%u201d'] = '"'
+  let l:patterns['\%u201e'] = '"'
+  let l:patterns['\%u201f'] = '"'
+  let l:patterns['\%u2026'] = '...'
+  let l:patterns['\%u2032'] = "'"
+  let l:patterns['\%u2033'] = '"'
+  " for each 'key' pattern, replace all instances with the 'value' value.
+  for [l:key, l:value] in items(l:patterns)
+    exec ':keepmarks %s/'. l:key .'/'. l:value .'/ge'
+  endfor
+endfunction
+
 " Returns true if paste mode is enabled
 function! HasPaste()
     if &paste

@@ -1,6 +1,7 @@
 [user]
   email = nicholas.h.chiang@gmail.com
   name = "Nicholas Chiang"
+	signingkey = 7C773FD92A5DBFA6
 
 [core]
   editor = nvim
@@ -17,7 +18,7 @@
   diffFilter = delta --color-only
 
 [commit]
-  gpgsign = false
+	gpgsign = true
   template = ~/.config/git/.git-commit-template
 
 [alias]

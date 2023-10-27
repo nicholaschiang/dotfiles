@@ -72,6 +72,9 @@ Plug 'evanleck/vim-svelte'
 " Automatic code linting w/ ALE 
 Plug 'dense-analysis/ale'
 
+" Automatically reload Flutter app on save
+Plug 'thosakwe/vim-flutter'
+
 " Use git from w/in Vim
 Plug 'tpope/vim-fugitive'
 
@@ -540,10 +543,33 @@ highlight CocWarningSign ctermbg=Black guibg=black
 highlight CocHintSign ctermbg=Black guibg=black
 highlight CocSearch ctermbg=Black ctermfg=Cyan guibg=black guifg=cyan
 highlight CocMenuSel ctermbg=Green ctermfg=Cyan guibg=green guifg=cyan
-highlight CocFloating ctermbg=Black ctermfg=Green guibg=black guifg=Green
+highlight CocFloating ctermbg=Black ctermfg=Green guibg=black guifg=green
+highlight CocInlayHint ctermbg=None ctermfg=Green guibg=None guifg=green
 
 
 """"""""""""""""""""""""""""""
+" => Copilot autocomplete 
+""""""""""""""""""""""""""""""
+" Use <C-J> to trigger Copilot autocomplete
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+
+
+""""""""""""""""""""""""""""""
+" => Flutter auto-reload 
+""""""""""""""""""""""""""""""
+" Add shortcuts to hot reload 
+nnoremap <leader>fa :FlutterRun -d all<cr>
+nnoremap <leader>fq :FlutterQuit<cr>
+nnoremap <leader>fr :FlutterHotReload<cr>
+nnoremap <leader>fR :FlutterHotRestart<cr>
+nnoremap <leader>fD :FlutterVisualDebug<cr>
+
+" Do not automatically open logs
+let g:flutter_show_log_on_run = 0
+
+
+"""""""""""""""""""""""""""""
 " => ALE code linting 
 """"""""""""""""""""""""""""""
 " Always show error sign column
@@ -572,14 +598,19 @@ nmap <leader>f :ALEFix<cr>
 let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 0
 let g:ale_fixers = { 
+      \ 'sql': ['pgformatter', 'sqlformat'],
+      \ 'html': ['prettier'],
       \ 'javascript': ['eslint', 'prettier'],
       \ 'typescript': ['eslint', 'prettier'],
-      \ 'typescriptreact': ['eslint', 'prettier'] 
+      \ 'typescriptreact': ['eslint', 'prettier'],
+      \ 'python': ['black'],
+      \ 'json': ['prettier'],
       \ }
 let g:ale_linters = { 
       \ 'javascript': ['eslint', 'flow-language-server'],
       \ 'typescript': ['eslint', 'tsserver'],
-      \ 'typescriptreact': ['eslint', 'tsserver'] 
+      \ 'typescriptreact': ['eslint', 'tsserver'], 
+      \ 'python': ['flake8', 'mypy'],
       \ }
 
 let s:sdks = finddir('.yarn/sdks', ';')
@@ -598,6 +629,9 @@ endif
 highlight SignColumn ctermbg=Black ctermfg=Cyan guibg=black guifg=cyan
 highlight ALEErrorSign ctermbg=Black ctermfg=Red guibg=black guifg=red
 highlight ALEWarningSign ctermbg=Black guibg=black
+highlight ALEInfoSign ctermbg=Black guibg=black
+highlight ALEStyleErrorSign ctermbg=Black guibg=black
+highlight ALEStyleWarningSign ctermbg=Black guibg=black
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

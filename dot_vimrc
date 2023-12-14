@@ -544,7 +544,13 @@ highlight CocHintSign ctermbg=Black guibg=black
 highlight CocSearch ctermbg=Black ctermfg=Cyan guibg=black guifg=cyan
 highlight CocMenuSel ctermbg=Green ctermfg=Cyan guibg=green guifg=cyan
 highlight CocFloating ctermbg=Black ctermfg=Green guibg=black guifg=green
-highlight CocInlayHint ctermbg=None ctermfg=Green guibg=None guifg=green
+highlight CocInlayHint ctermbg=None ctermfg=Black guibg=None guifg=black
+highlight CocInlayHintParameter ctermbg=None ctermfg=Black guibg=None guifg=black
+highlight CocInlayHintTYpe ctermbg=None ctermfg=Black guibg=None guifg=black
+highlight CocHintVirtualText ctermbg=None ctermfg=Black guibg=None guifg=black
+highlight CocInfoVirtualText ctermbg=None ctermfg=Black guibg=None guifg=black
+highlight CocErrorVirtualText ctermbg=None ctermfg=Black guibg=None guifg=black
+highlight CocWarningVirtualText ctermbg=None ctermfg=Black guibg=None guifg=black
 
 
 """"""""""""""""""""""""""""""
@@ -605,6 +611,7 @@ let g:ale_fixers = {
       \ 'typescriptreact': ['eslint', 'prettier'],
       \ 'python': ['black'],
       \ 'json': ['prettier'],
+      \ 'dart': ['dart-format'],
       \ }
 let g:ale_linters = { 
       \ 'javascript': ['eslint', 'flow-language-server'],
@@ -632,6 +639,7 @@ highlight ALEWarningSign ctermbg=Black guibg=black
 highlight ALEInfoSign ctermbg=Black guibg=black
 highlight ALEStyleErrorSign ctermbg=Black guibg=black
 highlight ALEStyleWarningSign ctermbg=Black guibg=black
+highlight ALEVirtualTextInfo ctermbg=None ctermfg=Black guibg=None guifg=black
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

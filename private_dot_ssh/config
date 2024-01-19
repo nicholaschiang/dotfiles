@@ -4,6 +4,17 @@ Host watchog
     ProxyJump sing.stanford.edu
     LocalForward 8890 127.0.0.1:8890
 
+Host paris
+    HostName paris.cs.byu.edu
+    User nhchiang
+    IdentityFile ~/.ssh/id_ed25519
+
+Host moat 
+    HostName moat.cs.byu.edu
+    User nhchiang
+    IdentityFile ~/.ssh/id_ed25519
+    ForwardAgent yes
+
 Host atlantic
     ForwardX11 yes
     ForwardX11Trusted yes
@@ -15,3 +26,13 @@ Host pacific
 Host arctic 
     ForwardX11 yes
     ForwardX11Trusted yes
+
+Host github.com
+    HostName github.com
+    AddKeysToAgent yes
+    IdentityFile ~/.ssh/id_ed25519
+
+Host sophia
+    HostName github.com
+    AddKeysToAgent yes
+    IdentityFile ~/.ssh/id_sophia

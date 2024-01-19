@@ -617,7 +617,7 @@ let g:ale_linters = {
       \ 'javascript': ['eslint', 'flow-language-server'],
       \ 'typescript': ['eslint', 'tsserver'],
       \ 'typescriptreact': ['eslint', 'tsserver'], 
-      \ 'python': ['flake8', 'mypy'],
+      \ 'python': ['black', 'flake8', 'mypy'],
       \ }
 
 let s:sdks = finddir('.yarn/sdks', ';')

@@ -21,6 +21,9 @@
 	gpgsign = true
   template = ~/.config/git/.git-commit-template
 
+[pretty]
+  fixes = Fixes: %Cred%h%Creset (\"%s\")
+
 [alias]
   s = status
   a = commit --amend --no-edit
@@ -61,6 +64,7 @@
 [push]
   default = simple
   followTags = true
+	autoSetupRemote = true
 
 [credential]
   helper = cache --timeout=7200
@@ -77,4 +81,7 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
-	required = true
+  required = true
+
+[includeIf "gitdir/i:~/repos/sophia/"]
+  path = repos/sophia/.gitconfig

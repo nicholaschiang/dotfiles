@@ -26,13 +26,3 @@ Host pacific
 Host arctic 
     ForwardX11 yes
     ForwardX11Trusted yes
-
-Host github.com
-    HostName github.com
-    AddKeysToAgent yes
-    IdentityFile ~/.ssh/id_ed25519
-
-Host sophia
-    HostName github.com
-    AddKeysToAgent yes
-    IdentityFile ~/.ssh/id_sophia

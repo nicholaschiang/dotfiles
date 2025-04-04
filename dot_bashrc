@@ -88,10 +88,10 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ls='ls -G'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias open="xdg-open &>/dev/null"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -136,7 +136,7 @@ alias count='ls -1 | wc -l'
 
 # Find and replace across multiple files
 replace() {
-  grep -rl "$1" ./ | LC_ALL=C xargs sed -i '' "s/$1/$2/g"
+  find . -type d -name node_modules -prune -false -o -type f -readable -writable -exec sed -i "$1" {} \;
 }
 
 # Install Ruby Gems to ~/gems
@@ -161,8 +161,8 @@ if [ -f '/home/nchiang/.netlify/helper/path.bash.inc' ]; then source '/home/nchi
 
 # Use NVM to manage Node versions
 export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" 
 
 # Add Fly.io CLI to path
 PATH="$HOME/.fly/bin:$PATH"
@@ -171,22 +171,27 @@ PATH="$HOME/.fly/bin:$PATH"
 PATH="$HOME/.poetry/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 
-# Add Vanta CLI to path
-PATH="/usr/local/vanta:$PATH"
-
-# Add Rust installs to path
-PATH="$HOME/.cargo/bin:$PATH"
-
 # Use Neovim instead of VIM
 alias vim=nvim
-alias vimdiff='nvim -d'
+export EDITOR="vim"
+
+# Added by travis gem
+[ -f /home/nchiang/.travis/travis.sh ] && source /home/nchiang/.travis/travis.sh
+. "$HOME/.cargo/env"
 
 # Add pyenv (python version manager) to path 
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-# Autocomplete for git branch names
-source ~/.git-completion.bash
+# This is required for Poetry > 1.3.2
+# See: https://numbersstationgroup.slack.com/archives/C02Q6JGU859/p1675094600313819?thread_ts=1675094320.832119&cid=C02Q6JGU859
+export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
 
-source /Users/nchiang/.docker/init-bash.sh || true # Added by Docker Desktop
+# pnpm
+export PNPM_HOME="/home/nchiang/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

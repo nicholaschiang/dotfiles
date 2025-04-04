@@ -1,13 +1,9 @@
 [user]
-  email = nicholas.h.chiang@gmail.com
+  email = nicholas.chiang@numbersstation.ai
   name = "Nicholas Chiang"
-	signingkey = 03360B16D26914A8
 
 [core]
   editor = nvim
-  attributesfile = ~/.gitattributes
-  commitGraph = true
-  abbrev = 12
   pager = delta
 
 [delta]
@@ -18,7 +14,7 @@
   diffFilter = delta --color-only
 
 [commit]
-	gpgsign = true
+  gpgsign = false
   template = ~/.config/git/.git-commit-template
 
 [pretty]
@@ -26,6 +22,7 @@
 
 [alias]
   s = status
+  commit = commit --no-verify
   a = commit --amend --no-edit
   cm = commit -m
   au = add -u
@@ -40,17 +37,21 @@
   wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
   save = !git add -A && git commit -m 'SAVEPOINT'
   wip = !git add -u && git commit -m "WIP"
+  purge = !git branch | grep -v "main" | xargs git branch -D
   bclean = "!f() { git branch --merged ${1-main} | grep -v " ${1-main}$" | xargs -r git branch -d; }; f"
   bdone = "!f() { git checkout ${1-main} && git up && git bclean ${1-main}; }; f"
+  glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+  clog = "!git log --pretty=\"%C(yellow)**%s**%n%Creset%n%b%n---\"" 
   di = diff --color-words
   dic = diff --color-words=.
   stats = shortlog -sen --no-merges
-  glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
-  flog = log --graph --pretty=fixes
+  flog = log --pretty=fixes
   dlog = log --graph --decorate --stat --date=iso --format=fuller
   ddlog = log --graph --decorate --stat --date=iso --format=fuller -p
   tlog = tag -l -n10
   hist = log --follow -p
+  ignore = update-index --skip-worktree
+  no-ignore = update-index --no-skip-worktree 
   p = push
   pf = push --force-with-lease
   upstream = !git push -u origin HEAD

@@ -68,6 +68,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'alampros/vim-styled-jsx'
 Plug 'pantharshit00/vim-prisma'
 Plug 'evanleck/vim-svelte'
+Plug 'NoahTheDuke/vim-just'
 
 " Automatic code linting w/ ALE 
 Plug 'dense-analysis/ale'
@@ -307,6 +308,11 @@ map <leader>tc :tabclose<cr>
 map <leader>tt :tabnext<cr>
 map <leader>tm :tabmove 
 map <leader>t :tabnext 
+
+" Let 'o' toggle between this and the last accessed buffer
+let g:lastbuf = 1
+nmap <Leader>o :exe "b ".g:lastbuf<CR>
+au BufLeave * let g:lastbuf = bufnr()
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1

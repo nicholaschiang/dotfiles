@@ -67,6 +67,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
 Plug 'alampros/vim-styled-jsx'
 Plug 'pantharshit00/vim-prisma'
+Plug 'leafOfTree/vim-svelte-plugin'
+Plug 'terrastruct/d2-vim'
 Plug 'evanleck/vim-svelte'
 Plug 'NoahTheDuke/vim-just'
 
@@ -200,6 +202,10 @@ syntax enable
 " Enable Svelte TypeScript support
 let g:svelte_preprocessors = ['typescript']
 
+" Enable Typescript syntax highlighting
+" See: https://github.com/leafOfTree/vim-svelte-plugin?tab=readme-ov-file
+let g:vim_svelte_plugin_use_typescript = 1
+
 " Enable 256 colors palette in Gnome Terminal
 if $COLORTERM == 'gnome-terminal'
     set t_Co=256
@@ -215,6 +221,10 @@ try
 catch
 endtry
 set background=dark
+
+" For some reason, this wasn't working as desired. Perhaps the highlighting
+" changed when I updated some package. This manually sets string colors.
+highlight String ctermfg=DarkCyan guifg=darkcyan
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -610,18 +620,24 @@ let g:ale_fix_on_save = 0
 let g:ale_fixers = { 
       \ 'sql': ['pgformatter', 'sqlformat'],
       \ 'html': ['prettier'],
+      \ 'svelte': ['eslint', 'prettier'],
       \ 'javascript': ['eslint', 'prettier'],
       \ 'typescript': ['eslint', 'prettier'],
       \ 'typescriptreact': ['eslint', 'prettier'],
       \ 'python': ['black'],
       \ 'json': ['prettier'],
       \ 'dart': ['dart-format'],
+      \ 'java': ['google_java_format'],
+      \ 'cpp': ['astyle'],
+      \ 'c': ['astyle'],
       \ }
 let g:ale_linters = { 
+      \ 'svelte': ['eslint', 'svelteserver'],
       \ 'javascript': ['eslint', 'flow-language-server'],
       \ 'typescript': ['eslint', 'tsserver'],
       \ 'typescriptreact': ['eslint', 'tsserver'], 
       \ 'python': ['black', 'flake8', 'mypy'],
+      \ 'java': [],
       \ }
 
 let s:sdks = finddir('.yarn/sdks', ';')

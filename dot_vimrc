@@ -71,6 +71,7 @@ Plug 'leafOfTree/vim-svelte-plugin'
 Plug 'terrastruct/d2-vim'
 Plug 'evanleck/vim-svelte'
 Plug 'NoahTheDuke/vim-just'
+Plug 'wuelnerdotexe/vim-astro'
 
 " Automatic code linting w/ ALE 
 Plug 'dense-analysis/ale'
@@ -205,6 +206,9 @@ let g:svelte_preprocessors = ['typescript']
 " Enable Typescript syntax highlighting
 " See: https://github.com/leafOfTree/vim-svelte-plugin?tab=readme-ov-file
 let g:vim_svelte_plugin_use_typescript = 1
+
+" Enable Astro TypeScript highlighting
+let g:astro_typescript = 'enable'
 
 " Enable 256 colors palette in Gnome Terminal
 if $COLORTERM == 'gnome-terminal'
@@ -364,8 +368,19 @@ let g:airline_powerline_fonts=1
 " Use Solarized Airline theme 
 let g:airline_solarized_gb='dark'
 
+" Resolve issues with Neovim v0.11.0
+" Ref: https://github.com/vim-airline/vim-airline/issues/2693#issuecomment-2424756650
+highlight statusline cterm=NONE gui=NONE
+highlight tabline cterm=NONE gui=NONE
+highlight winbar cterm=NONE gui=NONE
+
 " Enable Airline's smarter tab line
 let g:airline#extensions#tabline#enabled = 1
+
+" Disable the default tab line colors
+" Ref: https://github.com/pacha/vem-tabline/issues/11#issuecomment-636308047
+highlight tablinesel cterm=none gui=none
+highlight tablinefill cterm=none gui=none
 
 " Enable Airline ALE error display 
 let g:airline#extensions#ale#enabled = 1
@@ -473,11 +488,17 @@ set t_Cs=
 " For now, I find the autocomplete provided by Coc to be more useful and faster
 "imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
+autocmd BufNewFile,BufRead * Copilot disable
 
 " Do not look for a package.json as monorepos will have multiple deeply nested.
 let g:codeium_workspace_root_hints = ['.bzr','.git','.hg','.svn','_FOSSIL_']
 let g:codeium_disable_bindings = v:true
 inoremap <script><silent><nowait><expr> <C-j> codeium#Accept()
+
+" I don't want an LLM to write documentation for me.
+let g:codeium_filetypes = {
+    \ "markdown": v:false,
+    \ }
 
 
 """"""""""""""""""""""""""""""

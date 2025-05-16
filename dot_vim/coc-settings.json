@@ -1,0 +1,4 @@
+{
+  "svelte.enable-ts-plugin": true,
+  "flutter.lsp.initialization.closingLabels": false
+}

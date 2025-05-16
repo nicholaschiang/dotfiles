@@ -1,3 +1,9 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# set the COLORTERM and TERM manually (iTerm2 settings don't work)
+export COLORTERM="screen-256color"
+export TERM="screen-256color"
+
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
@@ -19,11 +25,15 @@ if [ -d "$HOME/.fly/bin" ] ; then
     PATH="$HOME/.fly/bin:$PATH"
 fi
 
-if [ -d "$HOME/.cargo/bin" ] ; then
-    PATH="$HOME/.cargo/bin:$PATH"
-fi
-
 if [ -f ~/.bashrc ]; then
    source ~/.bashrc
 fi
-. "$HOME/.cargo/env"
+
+# openjdk from Brew
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export JAVA_HOME="/opt/homebrew/opt/openjdk"
+
+# add Docker binaries to path (alternative to granting sudo access)
+source /Users/nchiang/.docker/init-bash.sh || true # Added by Docker Desktop
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"

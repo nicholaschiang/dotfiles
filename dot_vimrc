@@ -44,7 +44,7 @@ endif
 call plug#begin()
 
 " Solarized theming for Vim 
-Plug 'altercation/vim-colors-solarized'
+Plug 'craftzdog/solarized-osaka.nvim'
 
 " Search for (and open) files directly from Vim
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -210,33 +210,13 @@ let g:vim_svelte_plugin_use_typescript = 1
 " Enable Astro TypeScript highlighting
 let g:astro_typescript = 'enable'
 
-" Enable 256 colors palette in Gnome Terminal
-if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
-endif
-
 " Prevent redraw time exceptions with TypeScript
 " See: https://jameschambers.co.uk/vim-typescript-slow
 set re=0
 
 " Use Solarized dark as color scheme
-try
-    colorscheme solarized 
-catch
-endtry
+colorscheme solarized-osaka
 set background=dark
-
-" For some reason, this wasn't working as desired. Perhaps the highlighting
-" changed when I updated some package. This manually sets string colors.
-highlight String ctermfg=DarkCyan guifg=darkcyan
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions-=e
-    set t_Co=256
-    set guitablabel=%M\ %t
-endif
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -368,19 +348,8 @@ let g:airline_powerline_fonts=1
 " Use Solarized Airline theme 
 let g:airline_solarized_gb='dark'
 
-" Resolve issues with Neovim v0.11.0
-" Ref: https://github.com/vim-airline/vim-airline/issues/2693#issuecomment-2424756650
-highlight statusline cterm=NONE gui=NONE
-highlight tabline cterm=NONE gui=NONE
-highlight winbar cterm=NONE gui=NONE
-
 " Enable Airline's smarter tab line
 let g:airline#extensions#tabline#enabled = 1
-
-" Disable the default tab line colors
-" Ref: https://github.com/pacha/vem-tabline/issues/11#issuecomment-636308047
-highlight tablinesel cterm=none gui=none
-highlight tablinefill cterm=none gui=none
 
 " Enable Airline ALE error display 
 let g:airline#extensions#ale#enabled = 1
@@ -580,21 +549,6 @@ nmap <leader>rn <Plug>(coc-rename)
 " Store global Coc config in the ~/.vim directory
 let g:coc_config_home = '~/.vim'
 
-" Use the number column's background for Coc's error column 
-highlight CocErrorSign ctermbg=Black ctermfg=Red guibg=black guifg=red
-highlight CocWarningSign ctermbg=Black guibg=black
-highlight CocHintSign ctermbg=Black guibg=black
-highlight CocSearch ctermbg=Black ctermfg=Cyan guibg=black guifg=cyan
-highlight CocMenuSel ctermbg=Green ctermfg=Cyan guibg=green guifg=cyan
-highlight CocFloating ctermbg=Black ctermfg=Green guibg=black guifg=green
-highlight CocInlayHint ctermbg=None ctermfg=Black guibg=None guifg=black
-highlight CocInlayHintParameter ctermbg=None ctermfg=Black guibg=None guifg=black
-highlight CocInlayHintTYpe ctermbg=None ctermfg=Black guibg=None guifg=black
-highlight CocHintVirtualText ctermbg=None ctermfg=Black guibg=None guifg=black
-highlight CocInfoVirtualText ctermbg=None ctermfg=Black guibg=None guifg=black
-highlight CocErrorVirtualText ctermbg=None ctermfg=Black guibg=None guifg=black
-highlight CocWarningVirtualText ctermbg=None ctermfg=Black guibg=None guifg=black
-
 
 """"""""""""""""""""""""""""""
 " => Flutter auto-reload 
@@ -672,15 +626,6 @@ if !empty(s:sdks)
   let g:ale_typescript_tsserver_use_global = 1
   let g:ale_typescript_tsserver_executable = s:sdks . '/typescript/bin/tsserver'
 endif
-
-" Use the number column's background for Syntastic's error column
-highlight SignColumn ctermbg=Black ctermfg=Cyan guibg=black guifg=cyan
-highlight ALEErrorSign ctermbg=Black ctermfg=Red guibg=black guifg=red
-highlight ALEWarningSign ctermbg=Black guibg=black
-highlight ALEInfoSign ctermbg=Black guibg=black
-highlight ALEStyleErrorSign ctermbg=Black guibg=black
-highlight ALEStyleWarningSign ctermbg=Black guibg=black
-highlight ALEVirtualTextInfo ctermbg=None ctermfg=Black guibg=None guifg=black
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

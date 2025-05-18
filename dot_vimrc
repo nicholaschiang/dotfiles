@@ -345,7 +345,8 @@ endif
 let g:airline_symbols.space = "\ua0"
 let g:airline_powerline_fonts=1
 
-" Use Solarized Airline theme 
+" Use Solarized Airline theme
+let g:airline_theme='solarized'
 let g:airline_solarized_gb='dark'
 
 " Enable Airline's smarter tab line

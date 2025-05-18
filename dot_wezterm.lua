@@ -28,13 +28,12 @@ config.window_padding = {
 -- Hide the tab bar (unless there are 2+ tabs)
 config.hide_tab_bar_if_only_one_tab = true
 
--- Automatically maximize new windows
--- (https://github.com/wezterm/wezterm/issues/284#issuecomment-1177628870)
--- (https://github.com/wezterm/wezterm/issues/284#issuecomment-1189748208)
+-- Automatically toggle fullscreen on new windows
 -- (https://wezterm.org/config/lua/gui-events/gui-startup.html)
+-- (https://github.com/wezterm/wezterm/discussions/2506#discussioncomment-3619555)
 wezterm.on("gui-startup", function(cmd)
   local tab, pane, window = mux.spawn_window(cmd or {})
-  window:gui_window():maximize()
+  window:gui_window():perform_action(wezterm.action.ToggleFullScreen, pane)
 end)
 
 -- And finally, return the configuration to wezterm

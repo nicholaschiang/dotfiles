@@ -169,7 +169,10 @@ PATH="$HOME/.fly/bin:$PATH"
 
 # Add Poetry (Python package manager) to path
 PATH="$HOME/.poetry/bin:$PATH"
+
+# Add Mise (dev env version manager) to path and activate it 
 PATH="$HOME/.local/bin:$PATH"
+eval "$(mise activate bash)"
 
 # Use Neovim instead of VIM
 alias vim=nvim

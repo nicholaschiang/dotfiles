@@ -176,6 +176,7 @@ eval "$(mise activate bash)"
 
 # Use Neovim instead of VIM
 alias vim=nvim
+alias vimdiff='nvim -d'
 export EDITOR="vim"
 
 # This is required for Poetry > 1.3.2

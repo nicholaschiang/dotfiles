@@ -8,7 +8,7 @@ local config = wezterm.config_builder()
 -- This is where you actually apply your config choices
 
 -- Spawn a Ubuntu WSL shell in login mode
-config.default_prog = { 'ubuntu2204.exe' }
+config.default_prog = { '/opt/homebrew/bin/bash' }
 
 -- For example, changing the color scheme:
 config.color_scheme = 'Solarized Dark (Gogh)'

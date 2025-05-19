@@ -23,6 +23,7 @@ Host pacific
     ForwardX11 yes
     ForwardX11Trusted yes
 
-Host arctic 
+Host arctic
+    User nchiang
     ForwardX11 yes
     ForwardX11Trusted yes

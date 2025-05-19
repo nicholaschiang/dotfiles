@@ -28,6 +28,10 @@ config.window_padding = {
 -- Hide the tab bar (unless there are 2+ tabs)
 config.hide_tab_bar_if_only_one_tab = true
 
+-- Fixes an issue with key repeats when navigating Vim
+-- (https://www.reddit.com/r/commandline/comments/1621suy/help_issue_with_wezterm_and_vim_key_repeat/)
+config.use_ime = false
+
 -- Automatically toggle fullscreen on new windows
 -- (https://wezterm.org/config/lua/gui-events/gui-startup.html)
 -- (https://github.com/wezterm/wezterm/discussions/2506#discussioncomment-3619555)

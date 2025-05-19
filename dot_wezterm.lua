@@ -15,7 +15,7 @@ config.color_scheme = 'Solarized Dark (Gogh)'
 
 -- Use Iosevka font
 config.font = wezterm.font('Iosevka')
-config.font_size = 12
+config.font_size = 14
 
 -- Remove window padding
 config.window_padding = {

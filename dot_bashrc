@@ -2,6 +2,9 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# Use Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -183,7 +186,6 @@ PATH="/usr/local/vanta:$PATH"
 
 # Add Rust installs to path
 PATH="$HOME/.cargo/bin:$PATH"
-. "$HOME/.cargo/env"
 
 # Use PostgreSQL 15 instead of the default 14
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
@@ -193,9 +195,6 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@15/lib/pkgconfig"
 
 # Autocomplete for git branch names
 source ~/.git-completion.bash
-
-# Added by Docker Desktop
-source /Users/nchiang/.docker/init-bash.sh || true
 
 # pnpm
 export PNPM_HOME="/Users/nchiang/Library/pnpm"

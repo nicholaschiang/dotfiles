@@ -32,12 +32,13 @@ config.hide_tab_bar_if_only_one_tab = true
 -- (https://www.reddit.com/r/commandline/comments/1621suy/help_issue_with_wezterm_and_vim_key_repeat/)
 config.use_ime = false
 
--- Automatically toggle fullscreen on new windows
+-- Automatically maximize new windows
+-- (https://github.com/wezterm/wezterm/issues/284#issuecomment-1177628870)
+-- (https://github.com/wezterm/wezterm/issues/284#issuecomment-1189748208)
 -- (https://wezterm.org/config/lua/gui-events/gui-startup.html)
--- (https://github.com/wezterm/wezterm/discussions/2506#discussioncomment-3619555)
 wezterm.on("gui-startup", function(cmd)
   local tab, pane, window = mux.spawn_window(cmd or {})
-  window:gui_window():perform_action(wezterm.action.ToggleFullScreen, pane)
+  window:gui_window():maximize()
 end)
 
 -- And finally, return the configuration to wezterm

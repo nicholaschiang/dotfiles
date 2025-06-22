@@ -2,7 +2,7 @@
 set -gx FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git'
 set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 set -gx BAT_THEME "Solarized (dark)"
-set -gx EDITOR hx
+set -gx EDITOR nvim
 set -gx COLORTERM 24bit
 set -gx GRAB_HOME ~/repos
 set -gx OMAKASEBLUE_PATH "/home/$USER/.local/share/omakase-blue"

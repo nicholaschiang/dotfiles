@@ -5,5 +5,5 @@ Comment=Linear streamlines issues, projects, and roadmaps. Purpose-built for mod
 GenericName=Issue Tracker
 Keywords=list;todo;issues;jira;project;roadmap
 Icon=/home/nchiang/.local/share/chezmoi/dot_icons/linear.svg
-Exec=firefox --new-window --kiosk --profile /var/home/nchiang/.mozilla/firefox/4sg9m5uq.linear https://linear.app
+Exec=firefox --kiosk --profile /var/home/nchiang/.mozilla/firefox/4sg9m5uq.linear https://linear.app
 Type=Application

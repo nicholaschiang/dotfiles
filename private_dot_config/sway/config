@@ -34,7 +34,7 @@ set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
 output * bg $HOME/Pictures/background.png fit #000000
 
 # Use the same font as Wezterm
-font "Iosevka" 12 
+font "Iosevka" 10
 
 #
 # Example configuration:

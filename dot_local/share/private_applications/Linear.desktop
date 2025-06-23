@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Linear
-StartupWMClass=Linear
+StartupWMClass=app.linear
 Comment=Linear streamlines issues, projects, and roadmaps. Purpose-built for modern product development.
 GenericName=Issue Tracker
 Keywords=list;todo;issues;jira;project;roadmap

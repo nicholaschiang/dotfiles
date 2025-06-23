@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Apple Music
+StartupWMClass=com.apple.music
+Comment=Listen to millions of songs, watch music videos, and experience live performances all on Apple Music. Play on web, in app, or on Android with your subscription.
+GenericName=Music Player
+Icon=/home/nchiang/.local/share/chezmoi/dot_icons/apple-music.png
+Exec=firefox --kiosk --profile /var/home/nchiang/.mozilla/firefox/cqp0b90b.apple-music https://music.apple.com
+Type=Application
+Categories=Audio;AudioVideo;Music;

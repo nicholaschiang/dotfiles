@@ -32,6 +32,10 @@ set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Requires: desktop-backgrounds-compat, swaybg
 output * bg $HOME/Pictures/background.png fit #000000
+
+# Use the same font as Wezterm
+font "Iosevka" 12 
+
 #
 # Example configuration:
 #

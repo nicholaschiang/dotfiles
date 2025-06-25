@@ -47,7 +47,6 @@ call plug#begin()
 Plug 'craftzdog/solarized-osaka.nvim'
 
 " Search for (and open) files directly from Vim
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Show project structure w/ NERDTree

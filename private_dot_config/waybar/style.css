@@ -3,13 +3,31 @@
     font-size: 13px;
 }
 
+/* Solarized Dark https://ethanschoonover.com/solarized/ */
+@define-color base03 rgb(0, 43, 54);
+@define-color base02 rgb(7, 54, 66);
+@define-color base01 rgb(88, 110, 117);
+@define-color base00 rgb(101, 123, 131);
+@define-color base0 rgb(131, 148, 150);
+@define-color base1 rgb(147, 161, 161);
+@define-color base2 rgb(238, 232, 213);
+@define-color base3 rgb(253, 246, 227);
+@define-color yellow rgb(181, 137, 0);
+@define-color orange rgb(203, 75, 22);
+@define-color red rgb(220, 50, 47);
+@define-color magenta rgb(211, 54, 130);
+@define-color violet rgb(108, 113, 196);
+@define-color blue rgb(38, 139, 210);
+@define-color cyan rgb(42, 161, 152);
+@define-color green rgb(133, 153, 0);
+
 @define-color inactive_module_color #a9a9a9;
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.8);
-    border-color: rgba(100, 114, 125, 0.5);
+    background-color: @base03;
+    border-color: @base01;
     border-style: solid;
-    color: #ffffff;
+    color: @base1;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -103,7 +121,7 @@ window#waybar #window {
 
 #workspaces button {
     background-color: transparent;
-    color: #ffffff;
+    color: @base2;
 }
 
 #workspaces button:hover {
@@ -111,7 +129,7 @@ window#waybar #window {
 }
 
 #workspaces button.focused {
-    background-color: #64727D;
+    background-color: @base02;
 }
 
 window#waybar:not(.bottom):not(.left):not(.right) #workspaces button.focused {

@@ -21,7 +21,7 @@
 @define-color cyan rgb(42, 161, 152);
 @define-color green rgb(133, 153, 0);
 
-@define-color inactive_module_color #a9a9a9;
+@define-color inactive_module_color @base01;
 
 window#waybar {
     background-color: @base03;
@@ -259,32 +259,32 @@ window#waybar.bottom #mode {
  * Module colors
  */
 #cpu {
-    color: #2ecc71;
+    color: @green;
 }
 
 #memory {
-    color: #ba55d3;
+    color: @magenta;
 }
 
 #disk {
-    color: #964B00;
+    color: @orange;
 }
 
 #backlight {
-    color: #90b1b1;
+    color: @violet;
 }
 
 #network {
-    color: #00bfff;
+    color: @cyan;
 }
 
 #pulseaudio,
 #wireplumber {
-    color: #f1c40f;
+    color: @yellow;
 }
 
 #temperature {
-    color: #f0932b;
+    color: @orange;
 }
 
 #mpd {
@@ -296,7 +296,7 @@ window#waybar.bottom #mode {
 }
 
 #language {
-    color: #00b093;
+    color: @cyan;
 }
 
 #keyboard-state {

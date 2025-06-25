@@ -51,7 +51,7 @@
     },
     "clock": {
         // "timezone": "America/New_York",
-        "format": "{:%F %H:%M}",
+        "format": "{:%F %I:%M %p}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "cpu": {

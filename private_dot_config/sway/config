@@ -62,10 +62,10 @@ set $green #859900
 #client.urgent #2f343a #900000 #ffffff #900000 #900000
 #client.placeholder #000000 #0c0c0c #ffffff #000000 #0c0c0c
 
-client.focused $base01 $base01 $base2 $base1
-client.focused_inactive $base02 $base02 $base00 $base0
-client.focused_tab_title $base02 $base02 $base2
-client.unfocused $base02 $base02 $base00 $base0
+client.focused $base01 $base01 $base2 $cyan
+client.focused_inactive $base02 $base02 $base00 $base02
+client.focused_tab_title $base02 $base02 $base2 $base02
+client.unfocused $base02 $base02 $base00 $base02
 client.urgent $red $red $base3 $red
 client.placeholder $base03 $base02 $base2 $base03
 

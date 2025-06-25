@@ -121,7 +121,7 @@ window#waybar #window {
 
 #workspaces button {
     background-color: transparent;
-    color: @base2;
+    color: @base1;
 }
 
 #workspaces button:hover {
@@ -130,18 +130,28 @@ window#waybar #window {
 
 #workspaces button.focused {
     background-color: @base02;
+    color: @base2;
 }
 
 window#waybar:not(.bottom):not(.left):not(.right) #workspaces button.focused {
     box-shadow: inset 0 -2px;
 }
 
+window#waybar:not(.bottom):not(.left):not(.right) #workspaces button.urgent:not(.focused) {
+    box-shadow: inset 0 -2px @base01;
+}
+
 window#waybar.bottom #workspaces button.focused {
     box-shadow: inset 0 2px;
 }
 
+window#waybar.bottom #workspaces button.urgent:not(.focused) {
+    box-shadow: inset 0 2px @base01;
+}
+
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    background-color: @red;
+    color: @base3;
 }
 
 #mode {

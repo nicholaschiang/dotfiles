@@ -3,7 +3,7 @@
     font-size: 13px;
 }
 
-/* Solarized Dark https://ethanschoonover.com/solarized/ */
+/* Solarized dark (https://ethanschoonover.com/solarized/) */
 @define-color base03 rgb(0, 43, 54);
 @define-color base02 rgb(7, 54, 66);
 @define-color base01 rgb(88, 110, 117);

@@ -29,14 +29,42 @@ set $browser flatpak run org.mozilla.firefox
 # TODO: add window with the next release of rofi-wayland
 set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
 
+### Appearance configuration
+
+# Use the same font as Wezterm
+font "Iosevka" 10
+
+# Solarized dark (https://ethanschoonover.com/solarized/)
+set $base03 #002b36
+set $base02 #073642
+set $base01 #586e75
+set $base00 #657b83
+set $base0 #839496
+set $base1 #93a1a1
+set $base2 #eee8d5
+set $base3 #fdf6e3
+set $yellow #b58900
+set $orange #cb4b16
+set $red #dc322f
+set $magenta #d33682
+set $violet #6c71c4
+set $blue #268bd2
+set $cyan #2aa198
+set $green #859900
+
+# Default colors
+client.focused #4c7899 #285577 #ffffff #2e9ef4 #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50 #5f676a
+client.focused_tab_title #333333 #5f676a #ffffff
+client.unfocused #333333 #222222 #888888 #292d2e #222222
+client.urgent #2f343a #900000 #ffffff #900000 #900000
+client.placeholder #000000 #0c0c0c #ffffff #000000 #0c0c0c
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Requires: desktop-backgrounds-compat, swaybg
 output * bg $HOME/Pictures/background.png fit #000000
-
-# Use the same font as Wezterm
-font "Iosevka" 10
 
 #
 # Example configuration:

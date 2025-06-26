@@ -287,6 +287,11 @@ bindsym $mod+p exec sh -c -- "flatpak run org.flameshot.Flameshot gui"
     # Select and capture a custom rectangular area
     # Ctrl+Print  exec grimshot save area
 
+### Applications
+
+# Open bluetooth manager in floating mode
+for_window [app_id="blueman-manager"] floating enable
+
 # Include configs from 3 locations:
 #  - /usr/share/sway/config.d
 #  - /etc/sway/config.d

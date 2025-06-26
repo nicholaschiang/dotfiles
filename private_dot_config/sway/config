@@ -146,6 +146,9 @@ input "type:keyboard" {
     # Start a web browser
     bindsym $mod+o exec $browser
 
+    # Start bluetooth manager
+    bindsym $mod+d exec rofi-bluetooth
+
     # Kill focused window
     bindsym $mod+Shift+q kill
 

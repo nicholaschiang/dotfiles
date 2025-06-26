@@ -6,33 +6,33 @@
 image=$HOME/Pictures/background.png
 scaling=fit
 font=Iosevka
-font-size=12
+font-size=14
 
 color=000000
 indicator-idle-visible
-indicator-radius=60
-indicator-thickness=20
+indicator-radius=50
+indicator-thickness=8
 
-inside-color=1d1f21
-inside-clear-color=1d1f21
-inside-ver-color=1d1f21
-inside-wrong-color=1d1f21
+inside-color=000000
+inside-clear-color=000000
+inside-ver-color=000000
+inside-wrong-color=000000
 
-key-hl-color=7aa6daaa
-bs-hl-color=d54e53aa
+key-hl-color=000000aa
+bs-hl-color=991b1baa
 
-separator-color=55555555
+separator-color=00000055
 
-line-color=1d1f21
+line-color=000000
 line-uses-ring
 
-text-color=81a2be
-text-clear-color=b5bd68
+text-color=3730a3
+text-clear-color=92400e
 text-caps-lock-color=f0c674
-text-ver-color=81a2be
-text-wrong-color=cc6666
+text-ver-color=3730a3
+text-wrong-color=991b1b
 
-ring-color=81a2be55
-ring-ver-color=81a2be
-ring-clear-color=b5bd6811
-ring-wrong-color=cc6666
+ring-color=00000055
+ring-ver-color=3730a3
+ring-clear-color=92400e11
+ring-wrong-color=991b1b

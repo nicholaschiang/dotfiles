@@ -10,7 +10,7 @@ font-size=14
 
 color=000000
 indicator-idle-visible
-indicator-radius=50
+indicator-radius=48
 indicator-thickness=8
 
 inside-color=000000
@@ -19,20 +19,20 @@ inside-ver-color=000000
 inside-wrong-color=000000
 
 key-hl-color=000000aa
-bs-hl-color=991b1baa
+bs-hl-color=4c0519aa
 
 separator-color=00000055
 
 line-color=000000
 line-uses-ring
 
-text-color=3730a3
+text-color=073642
 text-clear-color=92400e
 text-caps-lock-color=f0c674
-text-ver-color=3730a3
-text-wrong-color=991b1b
+text-ver-color=073642
+text-wrong-color=881337
 
 ring-color=00000055
-ring-ver-color=3730a3
+ring-ver-color=073642
 ring-clear-color=92400e11
-ring-wrong-color=991b1b
+ring-wrong-color=881337

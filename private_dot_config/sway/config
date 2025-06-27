@@ -91,6 +91,8 @@ output "Dell Inc. DELL U2717D 67YGV74J251S" scale 1
 output "Dell Inc. DELL U2717D 67YGV74J251S" pos 0 0 res 2560x1440
 output "Dell Inc. DELL U2717D 67YGV74Q591S" scale 1
 output "Dell Inc. DELL U2717D 67YGV74Q591S" pos 0 0 res 2560x1440
+output "Dell Inc. DELL U2717D 67YGV74J779S" scale 1
+output "Dell Inc. DELL U2717D 67YGV74J779S" pos 0 0 res 2560x1440
 
 ### Idle configuration
 #
@@ -293,7 +295,14 @@ bindsym $mod+p exec sh -c -- "flatpak run org.flameshot.Flameshot gui"
 ### Applications
 
 # Open bluetooth manager in floating mode
-for_window [app_id="blueman-manager"] floating enable
+for_window {
+    [app_id="blueman-manager"] floating enable
+    [window_role="pop-up"] floating enable
+    [window_role="bubble"] floating enable
+    [window_role="dialog"] floating enable
+    [window_type="dialog"] floating enable
+    [class="Slack" title="Huddle:"] floating enable
+}
 
 # Include configs from 3 locations:
 #  - /usr/share/sway/config.d

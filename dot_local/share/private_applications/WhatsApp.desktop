@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=WhatsApp
+Comment=WhatsApp
+Exec=flatpak run org.chromium.Chromium --new-window --ozone-platform=wayland --app="https://web.whatsapp.com/" --name="WhatsApp" --class="WhatsApp"
+Terminal=false
+Type=Application
+Icon=/var/home/nchiang/.local/share/applications/icons/WhatsApp.png
+StartupNotify=true

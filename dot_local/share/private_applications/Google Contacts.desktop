@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Google Contacts
+Comment=Google Contacts
+Exec=flatpak run org.chromium.Chromium --new-window --ozone-platform=wayland --app="https://contacts.google.com/" --name="Google Contacts" --class="Google Contacts"
+Terminal=false
+Type=Application
+Icon=/var/home/nchiang/.local/share/applications/icons/Google Contacts.png
+StartupNotify=true

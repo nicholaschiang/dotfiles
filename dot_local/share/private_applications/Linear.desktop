@@ -4,6 +4,6 @@ StartupWMClass=app.linear
 Comment=Linear streamlines issues, projects, and roadmaps. Purpose-built for modern product development.
 GenericName=Issue Tracker
 Keywords=list;todo;issues;jira;project;roadmap
-Icon=/home/nchiang/.local/share/chezmoi/dot_icons/linear.png
+Icon=/var/home/nchiang/.local/share/applications/icons/Linear.png
 Exec=firefox --kiosk --profile /var/home/nchiang/.mozilla/firefox/4sg9m5uq.linear https://linear.app
 Type=Application

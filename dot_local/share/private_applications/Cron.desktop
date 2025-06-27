@@ -3,6 +3,6 @@ Name=Cron
 StartupWMClass=so.notion.calendar
 Comment=Cron Calendar is a free-to-use tool where you can view and manage your personal and work schedules in one place.
 GenericName=Calendar
-Icon=/home/nchiang/.local/share/chezmoi/dot_icons/cron.png
+Icon=/var/home/nchiang/.local/share/applications/icons/Cron.png
 Exec=firefox --kiosk --profile /var/home/nchiang/.mozilla/firefox/eatp2ywu.calendar https://calendar.notion.so
 Type=Application

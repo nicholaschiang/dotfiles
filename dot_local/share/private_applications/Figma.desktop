@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Figma
+Comment=Figma is the leading collaborative design tool for building meaningful products. Seamlessly design, prototype, develop, and collect feedback in a single platform.
+GenericName=Design Tool
+Exec=flatpak run org.chromium.Chromium --new-window --ozone-platform=wayland --app="https://figma.com" --name="Figma" --class="Figma"
+Terminal=false
+Type=Application
+Icon=/var/home/nchiang/.local/share/applications/icons/Figma.png
+StartupNotify=true

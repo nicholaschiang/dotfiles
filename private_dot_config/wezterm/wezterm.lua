@@ -44,6 +44,10 @@ config.hide_tab_bar_if_only_one_tab = true
 -- (https://www.reddit.com/r/commandline/comments/1621suy/help_issue_with_wezterm_and_vim_key_repeat/)
 config.use_ime = false
 
+-- Make the initial window huge to avoid sway visual layout shift
+config.initial_rows = 50
+config.initial_cols = 250
+
 -- make username/project paths clickable. this implies paths like the following are for github.
 -- ( "nvim-treesitter/nvim-treesitter" | wbthomason/packer.nvim | wez/wezterm | "wez/wezterm.git" )
 -- as long as a full url hyperlink regex exists above this it should not match a full url to

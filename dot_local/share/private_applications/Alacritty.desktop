@@ -1,7 +1,6 @@
 [Desktop Entry]
 Type=Application
-TryExec=alacritty
-Exec=alacritty
+Exec=bash -c 'alacritty msg --socket "$XDG_RUNTIME_DIR/alacritty.sock" create-window || alacritty --socket "$XDG_RUNTIME_DIR/alacritty.sock"'
 Icon=/var/home/nchiang/.local/share/applications/icons/Alacritty.svg
 Terminal=false
 Categories=System;TerminalEmulator;

@@ -15,7 +15,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 # Recommends: foot
-set $term gtk-launch Alacritty
+set $term alacritty msg --socket "$XDG_RUNTIME_DIR/alacritty.sock" create-window
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -143,7 +143,12 @@ input "type:keyboard" {
 # Basics:
 #
     # Start a terminal
+    exec alacritty --daemon --socket "$XDG_RUNTIME_DIR/alacritty.sock"
     bindsym $mod+Return exec $term
+
+    # Start foot in server mode
+    exec foot --server
+    bindsym $mod+u exec footclient
 
     # Start a web browser
     bindsym $mod+o exec $browser

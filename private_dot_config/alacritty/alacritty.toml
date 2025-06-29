@@ -1,7 +1,5 @@
-[general]
-import = [
-    "~/.config/alacritty/solarized_dark.toml",
-]
+[env]
+TERM = "xterm-256color"
 
 [font]
 size = 12
@@ -9,3 +7,31 @@ size = 12
 [font.normal]
 family = "Iosevka"
 style = "Regular"
+
+[colors.primary]
+background = "#002B36"
+foreground = "#839496"
+
+[colors.selection]
+text = "CellForeground"
+background = "#29263c"
+
+[colors.normal]
+black = "#073642"
+red = "#DC322F"
+green = "#859900"
+yellow = "#CF9A6B"
+blue = "#268BD2"
+magenta = "#D33682"
+cyan = "#2AA198"
+white = "#EEE8D5"
+
+[colors.bright]
+black = "#657B83"
+red = "#CB4B16"
+green = "#859900"
+yellow = "#CF9A6B"
+blue = "#6c71c4"
+magenta = "#D33682"
+cyan = "#2AA198"
+white = "#FDF6E3"

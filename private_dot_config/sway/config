@@ -292,6 +292,7 @@ bindsym $mod+r mode "resize"
 # Screenshots:
 # Super+P: Select area, window, or output
 bindsym $mod+p exec sh -c -- "flatpak run org.flameshot.Flameshot gui"
+bindsym $mod+shift+p exec sh -c -- "flatpak run io.github.seadve.Kooha"
     # Capture the currently active output
     # Print       exec grimshot save output
     # Capture the currently active window

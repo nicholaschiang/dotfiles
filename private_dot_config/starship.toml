@@ -4,13 +4,6 @@
 # Do not insert a new line between shell prompts
 add_newline = false
 
-# Always show the machine hostname
-[hostname]
-ssh_only = false
-
-[username]
-show_always = true
-
 [aws]
 disabled = true
 

@@ -83,16 +83,22 @@ output * bg $HOME/Pictures/background.png fit #000000
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 # Built-in display
-output "BOE 0x07C9 Unknown" scale 1
-output "BOE 0x07C9 Unknown" pos 320 1440 res 1920x1080
+output eDP-1 scale 1
+output eDP-1 pos 320 1440 res 1920x1080
+#output "BOE 0x07C9 Unknown" scale 1
+#output "BOE 0x07C9 Unknown" pos 320 1440 res 1920x1080
 
 # BYU CS lab displays
-output "Dell Inc. DELL U2717D 67YGV74J251S" scale 1
-output "Dell Inc. DELL U2717D 67YGV74J251S" pos 0 0 res 2560x1440
-output "Dell Inc. DELL U2717D 67YGV74Q591S" scale 1
-output "Dell Inc. DELL U2717D 67YGV74Q591S" pos 0 0 res 2560x1440
-output "Dell Inc. DELL U2717D 67YGV74J779S" scale 1
-output "Dell Inc. DELL U2717D 67YGV74J779S" pos 0 0 res 2560x1440
+output HDMI-A-2 scale 1
+output HDMI-A-2 pos 0 0 res 2560x1440
+#output "Dell Inc. DELL U2717D 67YGV74J251S" scale 1
+#output "Dell Inc. DELL U2717D 67YGV74J251S" pos 0 0 res 2560x1440
+#output "Dell Inc. DELL U2717D 67YGV74Q591S" scale 1
+#output "Dell Inc. DELL U2717D 67YGV74Q591S" pos 0 0 res 2560x1440
+#output "Dell Inc. DELL U2717D 67YGV74J779S" scale 1
+#output "Dell Inc. DELL U2717D 67YGV74J779S" pos 0 0 res 2560x1440
+#output "Dell Inc. DELL U2717D 67YGV74J799S" scale 1
+#output "Dell Inc. DELL U2717D 67YGV74J799S" pos 0 0 res 2560x1440
 
 ### Idle configuration
 #

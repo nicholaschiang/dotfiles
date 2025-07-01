@@ -132,7 +132,7 @@ input "type:keyboard" {
 #
     # Start a terminal
     exec alacritty --daemon --socket "$XDG_RUNTIME_DIR/alacritty.sock"
-    bindsym $mod+Return exec $term
+    bindsym $mod+Shift+Return exec $term
 
     # Start foot in server mode
     exec foot --server

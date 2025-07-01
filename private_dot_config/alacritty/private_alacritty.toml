@@ -4,7 +4,7 @@ TERM = "xterm-256color"
 [keyboard]
 bindings = [
   { key = "N", mods = "Control | Shift", action = "CreateNewWindow" },
-  { key = "Return", mods = "Super | Shift", action = "CreateNewWindow" }
+  { key = "Return", mods = "Super", action = "CreateNewWindow" }
 ]
 
 [font]

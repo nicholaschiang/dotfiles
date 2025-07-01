@@ -1,0 +1,20 @@
+[Unit]
+Description=sway - SirCmpwn's Wayland window manager
+Documentation=man:sway(5)
+Conflicts=getty@tty1.service
+After=systemd-user-sessions.service getty@tty1.service plymouth-quit.service systemd-logind.service
+PartOf=graphical.target
+StartLimitIntervalSec=30
+StartLimitBurst=2
+
+[Service]
+ExecStart=/usr/bin/sway
+Restart=always
+EnvironmentFile=/etc/sway/environment
+Type=simple
+Restart=on-failure
+RestartSec=1
+TimeoutStopSec=10
+
+[Install]
+Alias=display-manager.service

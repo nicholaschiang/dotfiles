@@ -23,7 +23,7 @@ set $term alacritty msg --socket "$XDG_RUNTIME_DIR/alacritty.sock" create-window
 set $rofi_cmd rofi \
         -terminal '$term'
 # Your preferred web browser
-set $browser flatpak run org.mozilla.firefox
+set $browser firefox
 # Shows a combined list of the applications with desktop files and
 # executables from PATH.
 # TODO: add window with the next release of rofi-wayland
@@ -122,8 +122,8 @@ input "type:touchpad" {
 }
 
 input "type:keyboard" {
-    repeat_delay 300
-    repeat_rate 30
+    repeat_delay 225
+    repeat_rate 35
 }
 
 ### Key bindings

@@ -30,10 +30,10 @@ First, install [`brew`](https://brew.sh):
 Then, you can install my preferred development tooling:
 
 ```bash
-brew install atuin bat btop eza fish fzf git-delta k9s mise neovim rust starship tmux zoxide
+brew install atuin bat btop eza fastfetch fish fzf git-delta kubectx k9s mise neovim rust starship tmux uv zoxide
 ```
 
-You can then use `mise` to configure global `node` and `python` installations:
+You can then use [`mise`](https://mise.jdx.dev) to configure global `node` and `python` installations:
 
 ```bash
 mise use --global node@22 python@3
@@ -47,6 +47,12 @@ When you first launch `vim` (or, rather, [`neovim`](https://github.com/neovim/ne
 
 ...to install of my `vim` plugins (configured via [`vim-plug`](https://github.com/junegunn/vim-plug)).
 
+I also install `rust` CLI tooling directly using `cargo`:
+
+```bash
+cargo install just ruplacer
+```
+
 ### Applications
 
 You can use `brew` to install my preferred GUI applications on MacOS:
@@ -56,4 +62,4 @@ brew install --cask docker-desktop firefox figma font-iosevka notion-calendar ra
 ```
 
 I typically use `wezterm` with `tmux` on MacOS, but `alacritty` is also very good.
-From my experience, `alacritty` is faster than `wezterm` but is less feature rich (e.g. `alacritty` does not support ligatures while `wezterm` does).
+From my experience, `alacritty` is faster than `wezterm` but is less feature rich (e.g. it does not support ligatures).

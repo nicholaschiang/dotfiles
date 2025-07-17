@@ -186,3 +186,5 @@ case ":$PATH:" in
 esac
 # pnpm end
 . "$HOME/.cargo/env"
+
+eval "$(/opt/homebrew/bin/brew shellenv)"

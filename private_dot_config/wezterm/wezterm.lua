@@ -7,6 +7,15 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
 
+-- Open a new window with mod+enter
+config.keys = {
+  {
+    key = 'Enter',
+    mods = 'SUPER',
+    action = wezterm.action.SpawnWindow
+  }
+}
+
 -- Spawn a fish shell in login mode
 config.default_prog = { 'fish', '-l' }
 

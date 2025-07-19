@@ -15,7 +15,8 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 # Recommends: foot
-set $term alacritty msg --socket "$XDG_RUNTIME_DIR/alacritty.sock" create-window
+set $term wezterm
+#set $term alacritty msg --socket "$XDG_RUNTIME_DIR/alacritty.sock" create-window
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -95,6 +96,11 @@ output * bg $HOME/Pictures/background.png fit #000000
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
+exec swayidle -w \
+     timeout 300 'swaylock -f -c 000000' \
+     timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+     before-sleep 'swaylock -f -c 000000'
+
 bindsym $mod+Escape exec swaylock -f
 
 ### Input configuration
@@ -131,7 +137,7 @@ input "type:keyboard" {
 # Basics:
 #
     # Start a terminal
-    exec alacritty --daemon --socket "$XDG_RUNTIME_DIR/alacritty.sock"
+    #exec alacritty --daemon --socket "$XDG_RUNTIME_DIR/alacritty.sock"
     bindsym $mod+Shift+Return exec $term
 
     # Start foot in server mode
@@ -289,6 +295,10 @@ bindsym $mod+shift+p exec sh -c -- "flatpak run io.github.seadve.Kooha"
     # Ctrl+Print  exec grimshot save area
 
 ### Applications
+
+bar {
+    swaybar_command waybar
+}
 
 # Open bluetooth manager in floating mode
 for_window {

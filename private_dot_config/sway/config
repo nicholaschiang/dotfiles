@@ -310,6 +310,10 @@ for_window {
     [class="Slack" title="Huddle"] floating enable
 }
 
+# Launch the Sway systemd target
+# https://wiki.archlinux.org/title/Sway#Manage_Sway-specific_daemons_with_systemd
+exec_always systemctl --user start sway-session.target
+
 # Include configs from 3 locations:
 #  - /usr/share/sway/config.d
 #  - /etc/sway/config.d

@@ -7,7 +7,13 @@ set -gx COLORTERM 24bit
 set -gx GRAB_HOME ~/repos
 set -gx OMAKASEBLUE_PATH "/home/$USER/.local/share/omakase-blue"
 
-# clear fish greeting
+# Enable dark theme system-wide
+# https://wiki.archlinux.org/title/Dark_mode_switching
+set -gx GTK_THEME "Adwaita:dark"
+set -gx GTK2_RC_FILES "/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc"
+set -gx QT_STYLE_OVERRIDE "Adwaita-Dark"
+
+# Clear fish greeting
 set -g fish_greeting
 
 # Path updates

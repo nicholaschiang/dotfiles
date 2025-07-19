@@ -157,6 +157,17 @@ I use [`fish`](https://fishshell.com/) as my default shell:
 chsh -s /usr/bin/fish
 ```
 
+To quickly set a system-wide [dark theme](https://wiki.archlinux.org/title/Dark_mode_switching):
+
+```bash
+yay -S gnome-themes-extra adwaita-qt5-git adwaita-qt6-git
+export GTK_THEME=Adwaita:dark
+export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
+export QT_STYLE_OVERRIDE=Adwaita-Dark
+```
+
+...these are also set in the `fish` configuration.
+
 Finally, you'll probably want to launch [`sway`](https://swaywm.org/):
 
 ```bash

@@ -14,10 +14,12 @@ Install and apply configuration with:
 ./bin/chezmoi init https://github.com/nicholaschiang/dotfiles.git --apply
 ```
 
-## Dependencies
+# Dependencies
 
 There are a couple external dependencies you'll have to install for some of the
 configurations in those dotfiles (namely `.vimrc`):
+
+## MacOS
 
 ### Tooling
 
@@ -63,3 +65,105 @@ brew install --cask docker-desktop firefox figma font-iosevka notion-calendar ra
 
 I typically use `wezterm` with `tmux` on MacOS, but `alacritty` is also very good.
 From my experience, `alacritty` is faster than `wezterm` but is less feature rich (e.g. it does not support ligatures).
+
+## Arch Linux
+
+My preferred distro of choice is currently [Arch Linux](https://en.wikipedia.org/wiki/Arch_Linux), primarily because (a) I love that it comes with essentially nothing baked-in, (b) it has absolutely stellar documentation, and (c) it has an incredible package ecosystem in [AUR](https://en.wikipedia.org/wiki/Arch_Linux#AUR).
+
+From [a fresh Arch installation](https://wiki.archlinux.org/title/Installation_guide), install [`yay`](https://github.com/Jguer/yay?tab=readme-ov-file#installation):
+
+```bash
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+```
+
+Then, you can install my preferred development tooling:
+
+```bash
+yay -S \
+  alacritty \
+  atuin \
+  base \
+  base-devel \
+  bat \
+  bottom \
+  btop \
+  btrfs-progs \
+  chezmoi \
+  chromium \
+  dnsmasq \
+  dunst \
+  efibootmgr \
+  eza \
+  fastfetch \
+  firefox \
+  fish \
+  fzf \
+  git \
+  git-delta \
+  git-lfs \
+  grub \
+  gst-plugin-pipewire \
+  intel-ucode \
+  iwd \
+  just \
+  k9s \
+  kanshi \
+  less \
+  libpulse \
+  libvirt \
+  linux \
+  linux-firmware \
+  man-db \
+  mise \
+  neovim \
+  openssh \
+  pipewire \
+  pipewire-alsa \
+  pipewire-jack \
+  pipewire-pulse \
+  postgresql \
+  python-poetry \
+  qemu-full \
+  ripgrep \
+  rofi-bluetooth-git \
+  rofi-wayland \
+  rust \
+  sof-firmware \
+  starship \
+  sway \
+  swaybg \
+  swayidle \
+  swaylock \
+  swtpm \
+  tldr \
+  ttc-iosevka \
+  ttf-font-awesome \
+  ttf-iosevka-nerd \
+  usage \
+  uv \
+  virt-manager \
+  waybar \
+  wezterm \
+  wget \
+  wireplumber \
+  wl-clipboard \
+  yay \
+  yay-debug \
+  zoxide \
+  zram-generator
+```
+
+I use [`fish`](https://fishshell.com/) as my default shell:
+
+```bash
+chsh -s /usr/bin/fish
+```
+
+Finally, you'll probably want to launch [`sway`](https://swaywm.org/):
+
+```bash
+sway
+```

@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=Google Photos
 Comment=Google Photos
-Exec=flatpak run org.chromium.Chromium --new-window --ozone-platform=wayland --app="https://photos.google.com/" --name="Google Photos" --class="Google Photos"
+Exec=chromium --new-window --ozone-platform=wayland --app="https://photos.google.com/" --name="Google Photos" --class="Google Photos"
 Terminal=false
 Type=Application
-Icon=/var/home/nchiang/.local/share/applications/icons/Google Photos.png
+Icon=/home/nchiang/.local/share/applications/icons/Google Photos.png
 StartupNotify=true

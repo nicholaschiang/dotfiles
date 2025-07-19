@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=ChatGPT
 Comment=ChatGPT
-Exec=flatpak run org.chromium.Chromium --new-window --ozone-platform=wayland --app="https://chatgpt.com/" --name="ChatGPT" --class="ChatGPT"
+Exec=chromium --new-window --ozone-platform=wayland --app="https://chatgpt.com/" --name="ChatGPT" --class="ChatGPT"
 Terminal=false
 Type=Application
-Icon=/var/home/nchiang/.local/share/applications/icons/ChatGPT.png
+Icon=/home/nchiang/.local/share/applications/icons/ChatGPT.png
 StartupNotify=true

@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=YouTube
 Comment=YouTube
-Exec=flatpak run org.chromium.Chromium --new-window --ozone-platform=wayland --app="https://youtube.com/" --name="YouTube" --class="YouTube"
+Exec=chromium --new-window --ozone-platform=wayland --app="https://youtube.com/" --name="YouTube" --class="YouTube"
 Terminal=false
 Type=Application
-Icon=/var/home/nchiang/.local/share/applications/icons/YouTube.png
+Icon=/home/nchiang/.local/share/applications/icons/YouTube.png
 StartupNotify=true

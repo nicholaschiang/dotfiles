@@ -3,6 +3,6 @@ Name=Cron
 StartupWMClass=so.notion.calendar
 Comment=Cron Calendar is a free-to-use tool where you can view and manage your personal and work schedules in one place.
 GenericName=Calendar
-Icon=/var/home/nchiang/.local/share/applications/icons/Cron.png
-Exec=flatpak run org.chromium.Chromium --new-window --ozone-platform=wayland --app="https://calendar.notion.so" --name="Cron" --class="Cron"
+Icon=/home/nchiang/.local/share/applications/icons/Cron.png
+Exec=chromium --new-window --ozone-platform=wayland --app="https://calendar.notion.so" --name="Cron" --class="Cron"
 Type=Application

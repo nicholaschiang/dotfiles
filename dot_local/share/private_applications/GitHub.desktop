@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=GitHub
 Comment=GitHub
-Exec=flatpak run org.chromium.Chromium --new-window --ozone-platform=wayland --app="https://github.com/" --name="GitHub" --class="GitHub"
+Exec=chromium --new-window --ozone-platform=wayland --app="https://github.com/" --name="GitHub" --class="GitHub"
 Terminal=false
 Type=Application
-Icon=/var/home/nchiang/.local/share/applications/icons/GitHub.png
+Icon=/home/nchiang/.local/share/applications/icons/GitHub.png
 StartupNotify=true

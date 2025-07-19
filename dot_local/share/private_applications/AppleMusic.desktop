@@ -3,7 +3,7 @@ Name=Apple Music
 StartupWMClass=com.apple.music
 Comment=Listen to millions of songs, watch music videos, and experience live performances all on Apple Music. Play on web, in app, or on Android with your subscription.
 GenericName=Music Player
-Icon=/var/home/nchiang/.local/share/applications/icons/AppleMusic.png
-Exec=flatpak run org.chromium.Chromium --new-window --ozone-platform=wayland --app="https://music.apple.com" --name="Apple Music" --class="Apple Music"
+Icon=/home/nchiang/.local/share/applications/icons/AppleMusic.png
+Exec=chromium --new-window --ozone-platform=wayland --app="https://music.apple.com" --name="Apple Music" --class="Apple Music"
 Type=Application
 Categories=Audio;AudioVideo;Music;

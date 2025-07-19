@@ -14,11 +14,6 @@ Install and apply configuration with:
 ./bin/chezmoi init https://github.com/nicholaschiang/dotfiles.git --apply
 ```
 
-# Dependencies
-
-There are a couple external dependencies you'll have to install for some of the
-configurations in those dotfiles (namely `.vimrc`):
-
 ## MacOS
 
 ### Tooling
@@ -47,7 +42,7 @@ When you first launch `vim` (or, rather, [`neovim`](https://github.com/neovim/ne
 :PlugInstall
 ```
 
-...to install of my `vim` plugins (configured via [`vim-plug`](https://github.com/junegunn/vim-plug)).
+...to install all of my `vim` plugins (configured via [`vim-plug`](https://github.com/junegunn/vim-plug)).
 
 I also install `rust` CLI tooling directly using `cargo`:
 

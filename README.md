@@ -86,6 +86,7 @@ yay -S \
   bottom \
   btop \
   btrfs-progs \
+  brightnessctl \
   chezmoi \
   chromium \
   dnsmasq \
@@ -115,10 +116,12 @@ yay -S \
   mise \
   neovim \
   openssh \
+  pamixer \
   pipewire \
   pipewire-alsa \
   pipewire-jack \
   pipewire-pulse \
+  playerctl \
   postgresql \
   python-poetry \
   qemu-full \
@@ -132,6 +135,7 @@ yay -S \
   swaybg \
   swayidle \
   swaylock \
+  sway-contrib \
   swtpm \
   tldr \
   ttc-iosevka \

@@ -287,12 +287,29 @@ bindsym $mod+r mode "resize"
 # Super+P: Select area, window, or output
 bindsym $mod+p exec sh -c -- "flatpak run org.flameshot.Flameshot gui"
 bindsym $mod+shift+p exec sh -c -- "flatpak run io.github.seadve.Kooha"
-    # Capture the currently active output
-    # Print       exec grimshot save output
-    # Capture the currently active window
-    # Alt+Print   exec grimshot save active
-    # Select and capture a custom rectangular area
-    # Ctrl+Print  exec grimshot save area
+# Capture the currently active output
+bindsym Print exec grimshot save output
+bindsym $mod+Print exec grimshot copy output
+# Capture the currently active window
+bindsym Alt+Print exec grimshot save active
+bindsym $mod+Alt+Print exec grimshot copy active
+# Select and capture a custom rectangular area
+bindsym Ctrl+Print exec grimshot save area
+bindsym $mod+Ctrl+Print exec grimshot copy area
+
+# Control pulse audio volume with pamixer (https://github.com/cdemoulins/pamixer)
+bindsym XF86AudioRaiseVolume  exec 'pamixer -i 5'
+bindsym XF86AudioLowerVolume  exec 'pamixer -d 5'
+bindsym XF86AudioMute         exec 'pamixer --toggle-mute'
+
+# Control MPRIS aware media players with playerctl (https://github.com/altdesktop/playerctl)
+bindsym XF86AudioMedia exec 'playerctl play-pause'
+bindsym XF86AudioPlay  exec 'playerctl play-pause'
+bindsym XF86AudioPrev  exec 'playerctl previous'
+bindsym XF86AudioNext  exec 'playerctl next'
+
+bindsym XF86MonBrightnessUp   exec 'brightnessctl s +5%'
+bindsym XF86MonBrightnessDown exec 'brightnessctl s 5%-'
 
 ### Applications
 

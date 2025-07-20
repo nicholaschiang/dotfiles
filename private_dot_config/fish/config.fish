@@ -6,6 +6,7 @@ set -gx EDITOR nvim
 set -gx COLORTERM 24bit
 set -gx GRAB_HOME ~/repos
 set -gx OMAKASEBLUE_PATH "/home/$USER/.local/share/omakase-blue"
+set -gx XDG_SCREENSHOTS_DIR "$HOME/Pictures"
 
 # Enable dark theme system-wide
 # https://wiki.archlinux.org/title/Dark_mode_switching
@@ -23,6 +24,7 @@ fish_add_path $HOME/.poetry/bin
 fish_add_path $OMAKASEBLUE_PATH/bin
 fish_add_path /home/linuxbrew/.linuxbrew/bin
 fish_add_path /home/linuxbrew/.linuxbrew/sbin
+fish_add_path /usr/share/sway-contrib
 
 # Configurations
 if status --is-interactive

@@ -312,7 +312,7 @@ for_window {
 
 # Launch the Sway systemd target
 # https://wiki.archlinux.org/title/Sway#Manage_Sway-specific_daemons_with_systemd
-exec_always systemctl --user start sway-session.target
+exec_always systemctl --user restart sway-session.target
 
 # Include configs from 3 locations:
 #  - /usr/share/sway/config.d
@@ -335,4 +335,8 @@ exec_always systemctl --user start sway-session.target
 # important to make the magic work. And if you want to learn the secret behind
 # the trick, it's all in the `wordexp(3)`.
 #
-include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
+#include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
+
+# Include the built-in configurations from the Arch package
+# https://wiki.archlinux.org/title/Sway#Configuration
+include /etc/sway/config.d/*

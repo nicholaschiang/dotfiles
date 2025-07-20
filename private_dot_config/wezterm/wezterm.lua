@@ -23,14 +23,15 @@ config.default_prog = { 'fish', '-l' }
 config.color_scheme = 'Solarized Dark (Gogh)'
 
 -- Use Iosevka font
-config.font = wezterm.font('Iosevka')
+--config.font = wezterm.font('Iosevka')
+config.font = wezterm.font_with_fallback { 'Berkeley Mono' }
 config.font_size = 12
 config.adjust_window_size_when_changing_font_size = false
 
 -- Sets the font for the window frame (tab bar)
 config.window_frame = {
     font = wezterm.font {
-        family = "Iosevka Term",
+        family = "Berkeley Mono",
         weight = "Bold"
     },
 }

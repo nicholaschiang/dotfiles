@@ -1,7 +1,7 @@
 @theme "solarized"
 
 * {
-    font: "Iosevka 12";
+    font: "Berkeley Mono 12";
  
     selected-normal-foreground:  rgba ( 129, 147, 150, 100 % );
     foreground:                  rgba ( 129, 147, 150, 100 % );

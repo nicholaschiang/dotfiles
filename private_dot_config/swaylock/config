@@ -5,7 +5,8 @@
 # e.g. image=$HOME/Pictures/default.png
 image=$HOME/Pictures/background.png
 scaling=fit
-font=Iosevka
+#font=Iosevka
+font=Berkeley Mono
 font-size=14
 
 color=000000

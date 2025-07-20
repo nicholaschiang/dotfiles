@@ -33,7 +33,8 @@ set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
 ### Appearance configuration
 
 # Use the same font as Wezterm
-font "Iosevka" 10
+#font "Iosevka" 10
+font "Berkeley Mono" 10
 
 # Solarized dark (https://ethanschoonover.com/solarized/)
 set $base03 #002b36
@@ -283,7 +284,7 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-# Screenshots:
+# Screenshots
 # Super+P: Select area, window, or output
 bindsym $mod+p exec sh -c -- "flatpak run org.flameshot.Flameshot gui"
 bindsym $mod+shift+p exec sh -c -- "flatpak run io.github.seadve.Kooha"

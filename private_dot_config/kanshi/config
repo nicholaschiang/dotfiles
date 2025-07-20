@@ -13,6 +13,4 @@ profile tmcb {
   exec swaymsg workspace 2, move workspace to HDMI-A-2
   exec swaymsg workspace 3, move workspace to HDMI-A-2
   exec swaymsg workspace 4, move workspace to HDMI-A-2
-  exec swaymsg workspace 5, move workspace to HDMI-A-2
-  exec swaymsg workspace 6, move workspace to HDMI-A-2
 }

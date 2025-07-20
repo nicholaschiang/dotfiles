@@ -161,6 +161,13 @@ I use [`fish`](https://fishshell.com/) as my default shell:
 chsh -s /usr/bin/fish
 ```
 
+I also [disable Bluetooth reconnecting](https://askubuntu.com/questions/1416933/ubuntu-22-04-keeps-reconnecting-to-airpods-when-you-connect-to-them-with-another) to avoid erroneously reconnecting my earbuds after I switch to my phone:
+
+```
+# /etc/bluetooth/main.conf
+ReconnectAttempts=0
+```
+
 To quickly set a system-wide [dark theme](https://wiki.archlinux.org/title/Dark_mode_switching):
 
 ```bash

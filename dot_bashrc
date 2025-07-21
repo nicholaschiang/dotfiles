@@ -169,6 +169,9 @@ PATH="$HOME/.poetry/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 eval "$(mise activate bash)"
 
+# Add Rust to path
+PATH="$HOME/.cargo/bin:$PATH"
+
 # Use Neovim instead of VIM
 alias vim=nvim
 alias vimdiff='nvim -d'
@@ -185,6 +188,8 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-. "$HOME/.cargo/env"
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# Load Homebrew if it exists
+if [ -f /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi

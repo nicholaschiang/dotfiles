@@ -3,7 +3,7 @@ profile default {
   output eDP-1 enable scale 1 position 0,0 mode 1920x1080
 }
 
-# BYU TMCB basement display
+# BYU TMCB basement display connected via HDMI
 profile tmcb {
   # Position the TMCB display above the built-in display
   output eDP-1 enable scale 1 position 320,1440 mode 1920x1080
@@ -13,4 +13,20 @@ profile tmcb {
   exec swaymsg workspace 2, move workspace to HDMI-A-2
   exec swaymsg workspace 3, move workspace to HDMI-A-2
   exec swaymsg workspace 4, move workspace to HDMI-A-2
+  exec swaymsg workspace 5, move workspace to HDMI-A-2
+  exec swaymsg workspace 6, move workspace to HDMI-A-2
+}
+
+# TV connected via USB-C
+profile tv {
+  # Position the TV display above the built-in display
+  output eDP-1 enable scale 1 position 960,2160 mode 1920x1080
+  output DP-1 enable scale 1 position 0,0 mode 3840x2160
+  # Automatically move workspaces 1-6 to the TV display
+  exec swaymsg workspace 1, move workspace to DP-1
+  exec swaymsg workspace 2, move workspace to DP-1
+  exec swaymsg workspace 3, move workspace to DP-1
+  exec swaymsg workspace 4, move workspace to DP-1
+  exec swaymsg workspace 5, move workspace to DP-1
+  exec swaymsg workspace 6, move workspace to DP-1
 }

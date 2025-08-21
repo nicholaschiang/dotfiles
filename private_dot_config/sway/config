@@ -287,7 +287,7 @@ bindsym $mod+r mode "resize"
 # Screenshots
 # Super+P: Select area, window, or output
 bindsym $mod+p exec sh -c -- "flatpak run org.flameshot.Flameshot gui"
-bindsym $mod+shift+p exec sh -c -- "flatpak run io.github.seadve.Kooha"
+bindsym $mod+Shift+p exec sh -c -- "flatpak run io.github.seadve.Kooha"
 # Capture the currently active output
 bindsym Print exec grimshot save output
 bindsym $mod+Print exec grimshot copy output
@@ -297,6 +297,10 @@ bindsym $mod+Alt+Print exec grimshot copy active
 # Select and capture a custom rectangular area
 bindsym Ctrl+Print exec grimshot save area
 bindsym $mod+Ctrl+Print exec grimshot copy area
+
+# Screen recording
+bindsym Ctrl+5 exec wf-recorder -f "$(date -Ins).mp4"
+bindsym Ctrl+Shift+5 exec wf-recorder -f "$(date -Ins).mp4" -g "$(slurp)"
 
 # Control pulse audio volume with pamixer (https://github.com/cdemoulins/pamixer)
 bindsym XF86AudioRaiseVolume  exec 'pamixer -i 5'

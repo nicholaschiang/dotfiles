@@ -1,0 +1,16 @@
+font=Berkeley Mono 12
+
+[warning]
+background=002b36
+border=073642
+border-bottom=586e75
+border-bottom-size=2
+button-background=073642
+text=cb4b16
+button-text=93a1a1
+button-border-size=1
+button-gap=4
+button-dismiss-gap=4
+button-margin-right=8
+button-padding=6
+message-padding=6

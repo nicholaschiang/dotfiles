@@ -225,6 +225,9 @@ input "type:keyboard" {
     # We just use 1-10 as the default.
     # Move between last focused workspaces
     bindsym $mod+Tab workspace back_and_forth
+    # Move between workspaces with swipe gestures (e.g. like MacOS)
+    bindgesture swipe:right workspace prev
+    bindgesture swipe:left workspace next
 #
 # Layout stuff:
 #

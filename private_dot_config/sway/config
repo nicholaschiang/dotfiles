@@ -107,6 +107,9 @@ exec swayidle -w \
 
 bindsym $mod+Escape exec swaylock -f
 
+# Easily see which windows are using xwayland
+for_window [shell="xwayland"] title_format "[xwayland] %title"
+
 ### Input configuration
 #
 # Example configuration:

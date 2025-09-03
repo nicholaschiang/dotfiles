@@ -295,7 +295,7 @@ bindsym $mod+r mode "resize"
 
 # Screenshots
 # Super+P: Select area, window, or output
-bindsym $mod+p exec sh -c -- "flatpak run org.flameshot.Flameshot gui"
+bindsym $mod+p exec grim -g "$(slurp -o -r -c '#ff0000ff')" -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
 bindsym $mod+Shift+p exec sh -c -- "flatpak run io.github.seadve.Kooha"
 # Capture the currently active output
 bindsym Print exec grimshot save output

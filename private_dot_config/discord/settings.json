@@ -1,10 +1,11 @@
 {
   "IS_MAXIMIZED": false,
   "IS_MINIMIZED": false,
+  "SKIP_HOST_UPDATE": true,
   "WINDOW_BOUNDS": {
     "x": 0,
     "y": 0,
-    "width": 956,
+    "width": 940,
     "height": 1023
   }
 }

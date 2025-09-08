@@ -17,16 +17,44 @@ profile tmcb {
   exec swaymsg workspace 6, move workspace to HDMI-A-2
 }
 
-# TV connected via USB-C
-profile tv {
+# TV connected via HDMI
+profile tvhdmi {
   # Position the TV display above the built-in display
-  output eDP-1 enable scale 1 position 960,2160 mode 1920x1080
-  output DP-1 enable scale 1 position 0,0 mode 3840x2160
+  output eDP-1 enable scale 1 position 1088,2160 mode 1920x1080
+  output HDMI-A-2 enable scale 1 position 0,0 mode 4096x2160
   # Automatically move workspaces 1-6 to the TV display
+  exec swaymsg workspace 1, move workspace to HDMI-A-2
+  exec swaymsg workspace 2, move workspace to HDMI-A-2
+  exec swaymsg workspace 3, move workspace to HDMI-A-2
+  exec swaymsg workspace 4, move workspace to HDMI-A-2
+  exec swaymsg workspace 5, move workspace to HDMI-A-2
+  exec swaymsg workspace 6, move workspace to HDMI-A-2
+}
+
+# LG 45GX950A-B connected via USB-C
+profile lgusbc {
+  # Position the LG display above the built-in display
+  output eDP-1 enable scale 1 position 760,1440 mode 1920x1080
+  output DP-1 enable scale 1 position 0,0 mode 3440x1440
+  # Automatically move workspaces 1-6 to the LG display
   exec swaymsg workspace 1, move workspace to DP-1
   exec swaymsg workspace 2, move workspace to DP-1
   exec swaymsg workspace 3, move workspace to DP-1
   exec swaymsg workspace 4, move workspace to DP-1
   exec swaymsg workspace 5, move workspace to DP-1
   exec swaymsg workspace 6, move workspace to DP-1
+}
+
+# LG 45GX950A-B connected via USB-C
+profile lgusbc {
+  # Position the LG display above the built-in display
+  output eDP-1 enable scale 1 position 760,1440 mode 1920x1080
+  output DP-2 enable scale 1 position 0,0 mode 3440x1440
+  # Automatically move workspaces 1-6 to the LG display
+  exec swaymsg workspace 1, move workspace to DP-2
+  exec swaymsg workspace 2, move workspace to DP-2
+  exec swaymsg workspace 3, move workspace to DP-2
+  exec swaymsg workspace 4, move workspace to DP-2
+  exec swaymsg workspace 5, move workspace to DP-2
+  exec swaymsg workspace 6, move workspace to DP-2
 }

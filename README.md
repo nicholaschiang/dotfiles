@@ -190,6 +190,15 @@ export QT_STYLE_OVERRIDE=Adwaita-Dark
 
 ...these are also set in the `fish` configuration.
 
+To configure the default browser:
+
+```
+/usr/share/applications🔒
+❯ xdg-mime default firefox.desktop x-scheme-handler/http
+/usr/share/applications🔒
+❯ xdg-mime default firefox.desktop x-scheme-handler/https
+```
+
 Finally, you'll probably want to launch [`sway`](https://swaywm.org/):
 
 ```bash

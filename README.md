@@ -65,7 +65,11 @@ From my experience, `alacritty` is faster than `wezterm` but is less feature ric
 
 My preferred distro of choice is currently [Arch Linux](https://en.wikipedia.org/wiki/Arch_Linux), primarily because (a) I love that it comes with essentially nothing baked-in, (b) it has absolutely stellar documentation, and (c) it has an incredible package ecosystem in [AUR](https://en.wikipedia.org/wiki/Arch_Linux#AUR).
 
-From [a fresh Arch installation](https://wiki.archlinux.org/title/Installation_guide), install [`yay`](https://github.com/Jguer/yay?tab=readme-ov-file#installation):
+First, [install Arch](https://wiki.archlinux.org/title/Installation_guide).
+I referenced these two guides ([1](https://gist.github.com/mjkstra/96ce7a5689d753e7a6bdd92cdc169bae), [2](https://gist.github.com/uosyph/bb7db7606c4916535081ae7b0f6bff2d)) when I installed Arch alongside an existing Windows 11 installation.
+I had to resolve an issue with GRUB and LUKS encryption [this way](https://unix.stackexchange.com/questions/764872/luks-password-correct-but-not-accepted).
+
+Then, from your fresh Arch installation, install [`yay`](https://github.com/Jguer/yay?tab=readme-ov-file#installation):
 
 ```bash
 sudo pacman -S --needed git base-devel

@@ -74,7 +74,14 @@ cd yay
 makepkg -si
 ```
 
-Then, you can install my preferred development tooling:
+Then, you can install my preferred development tooling.
+You can either run the script I made:
+
+```bash
+./install.sh
+```
+
+Or, run the command yourself manually (cherry-picking which tools to install):
 
 ```bash
 yay -S \

@@ -72,7 +72,8 @@ profile lg2tv1 {
 # LG 45GX950A-B connected via USB-C
 profile lg1 {
   # Position the LG display above the built-in display
-  output eDP-1 enable scale 1 position 1280,2160 mode 2560x1600
+  #output eDP-1 enable scale 1 position 1280,2160 mode 2560x1600
+  output eDP-1 disable
   output DP-1 enable scale 1 position 0,0 mode 5120x2160
   # Automatically move workspaces 1-6 to the LG display
   exec swaymsg workspace 1, move workspace to DP-1
@@ -86,7 +87,8 @@ profile lg1 {
 # LG 45GX950A-B connected via USB-C
 profile lg2 {
   # Position the LG display above the built-in display
-  output eDP-1 enable scale 1 position 1280,2160 mode 2560x1600
+  #output eDP-1 enable scale 1 position 1280,2160 mode 2560x1600
+  output eDP-1 disable
   output DP-3 enable scale 1 position 0,0 mode 5120x2160
   # Automatically move workspaces 1-6 to the LG display
   exec swaymsg workspace 1, move workspace to DP-3

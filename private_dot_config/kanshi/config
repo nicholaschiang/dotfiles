@@ -1,12 +1,12 @@
 # Built-in TP display
 profile default {
-  output eDP-1 enable scale 1 position 0,0 mode 1920x1080
+  output eDP-1 enable scale 1 position 0,0 mode 2560x1600
 }
 
 # BYU TMCB basement display connected via HDMI
 profile tmcb {
   # Position the TMCB display above the built-in display
-  output eDP-1 enable scale 1 position 320,1440 mode 1920x1080
+  output eDP-1 enable scale 1 position 0,1440 mode 2560x1600
   output HDMI-A-2 enable scale 1 position 0,0 mode 2560x1440
   # Automatically move workspaces 1-6 to the TMCB display
   exec swaymsg workspace 1, move workspace to HDMI-A-2
@@ -20,7 +20,7 @@ profile tmcb {
 # TV connected via HDMI
 profile tvhdmi {
   # Position the TV display above the built-in display
-  output eDP-1 enable scale 1 position 1088,2160 mode 1920x1080
+  output eDP-1 enable scale 1 position 768,2160 mode 2560x1600
   output HDMI-A-2 enable scale 1 position 0,0 mode 4096x2160
   # Automatically move workspaces 1-6 to the TV display
   exec swaymsg workspace 1, move workspace to HDMI-A-2
@@ -35,8 +35,8 @@ profile tvhdmi {
 profile lg1tv2 {
   # Position the LG TV above the LG GX95 display
   output eDP-1 disable
-  output DP-1 enable scale 1 position 1088,2160 mode 3440x1440
-  output DP-2 enable scale 1 position 0,0 mode 4096x2160
+  output DP-1 enable scale 1 position 0,2160 mode 5120x2160
+  output DP-3 enable scale 1 position 512,0 mode 4096x2160
   # Automatically move workspaces 1-9 to the LG display
   exec swaymsg workspace 1, move workspace to DP-1
   exec swaymsg workspace 2, move workspace to DP-1
@@ -47,33 +47,33 @@ profile lg1tv2 {
   exec swaymsg workspace 7, move workspace to DP-1
   exec swaymsg workspace 8, move workspace to DP-1
   exec swaymsg workspace 9, move workspace to DP-1
-  exec swaymsg workspace 10, move workspace to DP-2
+  exec swaymsg workspace 10, move workspace to DP-3
 }
 
 # LG TV and LG 45GX950A-B connected via USB-C
 profile lg2tv1 {
   # Position the LG TV above the LG GX95 display
   output eDP-1 disable
-  output DP-2 enable scale 1 position 1088,2160 mode 3440x1440
-  output DP-1 enable scale 1 position 0,0 mode 4096x2160
+  output DP-3 enable scale 1 position 0,2160 mode 5120x2160
+  output DP-1 enable scale 1 position 512,0 mode 4096x2160
   # Automatically move workspaces 1-9 to the LG display
-  exec swaymsg workspace 1, move workspace to DP-2
-  exec swaymsg workspace 2, move workspace to DP-2
-  exec swaymsg workspace 3, move workspace to DP-2
-  exec swaymsg workspace 4, move workspace to DP-2
-  exec swaymsg workspace 5, move workspace to DP-2
-  exec swaymsg workspace 6, move workspace to DP-2
-  exec swaymsg workspace 7, move workspace to DP-2
-  exec swaymsg workspace 8, move workspace to DP-2
-  exec swaymsg workspace 9, move workspace to DP-2
+  exec swaymsg workspace 1, move workspace to DP-3
+  exec swaymsg workspace 2, move workspace to DP-3
+  exec swaymsg workspace 3, move workspace to DP-3
+  exec swaymsg workspace 4, move workspace to DP-3
+  exec swaymsg workspace 5, move workspace to DP-3
+  exec swaymsg workspace 6, move workspace to DP-3
+  exec swaymsg workspace 7, move workspace to DP-3
+  exec swaymsg workspace 8, move workspace to DP-3
+  exec swaymsg workspace 9, move workspace to DP-3
   exec swaymsg workspace 10, move workspace to DP-1
 }
 
 # LG 45GX950A-B connected via USB-C
 profile lg1 {
   # Position the LG display above the built-in display
-  output eDP-1 enable scale 1 position 760,1440 mode 1920x1080
-  output DP-1 enable scale 1 position 0,0 mode 3440x1440
+  output eDP-1 enable scale 1 position 1280,2160 mode 2560x1600
+  output DP-1 enable scale 1 position 0,0 mode 5120x2160
   # Automatically move workspaces 1-6 to the LG display
   exec swaymsg workspace 1, move workspace to DP-1
   exec swaymsg workspace 2, move workspace to DP-1
@@ -86,13 +86,13 @@ profile lg1 {
 # LG 45GX950A-B connected via USB-C
 profile lg2 {
   # Position the LG display above the built-in display
-  output eDP-1 enable scale 1 position 760,1440 mode 1920x1080
-  output DP-2 enable scale 1 position 0,0 mode 3440x1440
+  output eDP-1 enable scale 1 position 1280,2160 mode 2560x1600
+  output DP-3 enable scale 1 position 0,0 mode 5120x2160
   # Automatically move workspaces 1-6 to the LG display
-  exec swaymsg workspace 1, move workspace to DP-2
-  exec swaymsg workspace 2, move workspace to DP-2
-  exec swaymsg workspace 3, move workspace to DP-2
-  exec swaymsg workspace 4, move workspace to DP-2
-  exec swaymsg workspace 5, move workspace to DP-2
-  exec swaymsg workspace 6, move workspace to DP-2
+  exec swaymsg workspace 1, move workspace to DP-3
+  exec swaymsg workspace 2, move workspace to DP-3
+  exec swaymsg workspace 3, move workspace to DP-3
+  exec swaymsg workspace 4, move workspace to DP-3
+  exec swaymsg workspace 5, move workspace to DP-3
+  exec swaymsg workspace 6, move workspace to DP-3
 }

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Screenshot a window.
+# https://github.com/emersion/slurp
+# https://github.com/emersion/grim
+# https://github.com/gabm/satty
+grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | "\(.rect.x+.window_rect.x),\(.rect.y+.window_rect.y) \(.window_rect.width)x\(.window_rect.height)"' | slurp -c '#dc322fff')" -t ppm - | satty --filename - --actions-on-enter "save-to-clipboard" --save-after-copy --early-exit --font-family "Berkeley Mono" --output-filename $XDG_SCREENSHOTS_DIR/$(date '+%Y-%m-%d-%H:%M:%S').png

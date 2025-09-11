@@ -296,17 +296,15 @@ bindsym $mod+r mode "resize"
 
 # Screenshots
 # Super+P: Select area, window, or output
-bindsym $mod+p exec grim -g "$(slurp -o -r -c '#ff0000ff')" -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
-bindsym $mod+Shift+p exec sh -c -- "flatpak run io.github.seadve.Kooha"
+bindsym $mod+p exec screenshot-output
+bindsym $mod+Shift+p exec screenshot-window
 # Capture the currently active output
 bindsym Print exec grimshot save output
 bindsym $mod+Print exec grimshot copy output
 # Capture the currently active window
-bindsym Alt+Print exec grimshot save active
-bindsym $mod+Alt+Print exec grimshot copy active
+bindsym Ctrl+Print exec grimshot copy active
 # Select and capture a custom rectangular area
-bindsym Ctrl+Print exec grimshot save area
-bindsym $mod+Ctrl+Print exec grimshot copy area
+bindsym Alt+Print exec grimshot copy area
 
 # Screen recording
 bindsym Ctrl+5 exec wf-recorder -f "$(date -Ins).mp4"

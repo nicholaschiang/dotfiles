@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Screenshot an output (i.e. the entire display).
+# https://github.com/emersion/slurp
+# https://github.com/emersion/grim
+# https://github.com/gabm/satty
+grim -g "$(slurp -o -r -c '#dc322fff')" -t ppm - | satty --filename - --fullscreen --actions-on-enter "save-to-clipboard" --save-after-copy --early-exit --font-family "Berkeley Mono" --output-filename $XDG_SCREENSHOTS_DIR/$(date '+%Y-%m-%d-%H:%M:%S').png

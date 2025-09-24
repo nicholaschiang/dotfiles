@@ -3,10 +3,11 @@ set -gx FZF_DEFAULT_COMMAND 'fd --type f --no-ignore --hidden --follow --exclude
 set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 set -gx BAT_THEME "Solarized (dark)"
 set -gx EDITOR nvim
+set -gx BROWSER firefox
 set -gx COLORTERM 24bit
 set -gx GRAB_HOME ~/repos
 set -gx OMAKASEBLUE_PATH "/home/$USER/.local/share/omakase-blue"
-set -gx XDG_SCREENSHOTS_DIR "$HOME/Pictures"
+set -gx XDG_SCREENSHOTS_DIR "$HOME/Pictures/Screenshots"
 
 # Enable dark theme system-wide
 # https://wiki.archlinux.org/title/Dark_mode_switching

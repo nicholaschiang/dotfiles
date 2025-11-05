@@ -50,7 +50,7 @@ profile lgtv {
   # Position the LG TV above the LG GX95 display
   output eDP-1 disable
   output DP-1 enable scale 1 position 0,2160 mode 5120x2160
-  output HDMI-A-1 enable scale 1 position 512,0 mode 3840x2160
+  output HDMI-A-1 enable scale 1 position 512,0 mode 3840x2160@60
   # Automatically move workspaces 1-9 to the LG display
   exec swaymsg workspace 1, move workspace to DP-1
   exec swaymsg workspace 2, move workspace to DP-1
@@ -106,8 +106,9 @@ profile lg2tv1 {
 profile lg1 {
   # Position the LG display above the built-in display
   #output eDP-1 enable scale 1 position 1280,2160 mode 2560x1600
-  output eDP-1 enable scale 1 mode 2560x1600
-  output DP-1 enable scale 1 mode 5120x2160
+  #output eDP-1 enable scale 1 mode 2560x1600
+  output eDP-1 disable
+  output DP-1 enable scale 1 position 0,0 mode 5120x2160
   # Automatically move workspaces 1-6 to the LG display
   exec swaymsg workspace 1, move workspace to DP-1
   exec swaymsg workspace 2, move workspace to DP-1

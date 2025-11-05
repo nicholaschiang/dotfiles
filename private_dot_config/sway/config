@@ -77,6 +77,7 @@ client.placeholder $base03 $base02 $base2 $base03
 # Requires: desktop-backgrounds-compat, swaybg
 #output * bg $HOME/Pictures/OPMcLaren_1_4k.jpg stretch #000000
 output * bg $HOME/Pictures/OP6_Red_01_4k.jpg stretch #000000
+#output * bg $HOME/Pictures/OP6_01_4k.jpg stretch #000000
 
 #
 # Example configuration:
@@ -101,12 +102,16 @@ output * bg $HOME/Pictures/OP6_Red_01_4k.jpg stretch #000000
 for_window [class=".*"] inhibit_idle fullscreen
 for_window [app_id=".*"] inhibit_idle fullscreen
 
-exec swayidle -w \
-     timeout 300 'swaylock -f -c 000000' \
-     timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-     before-sleep 'swaylock -f -c 000000'
+#exec swayidle -w \
+     #timeout 300 'swaylock -f -c 000000' \
+     #timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+     #before-sleep 'swaylock -f -c 000000'
 
 bindsym $mod+Escape exec swaylock -f
+bindsym $mod+Backspace exec systemctl sleep
+#bindsym $mod+Backspace exec swaymsg "output * power off"
+#bindsym $mod+Shift+Backspace exec swaymsg "output * power on"
+#bindsym $mod+Escape exec swaymsg "output * power off"
 
 # Easily see which windows are using xwayland
 for_window [shell="xwayland"] title_format "[xwayland] %title"
@@ -175,7 +180,8 @@ input "type:keyboard" {
     bindsym $mod+Shift+c exec kanshictl reload ; reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    #bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+e exec swaymsg exit
 #
 # Moving around:
 #

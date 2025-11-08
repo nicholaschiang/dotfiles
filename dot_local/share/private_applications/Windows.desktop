@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Windows
+Comment=Microsoft Windows, commonly known as Windows, is a proprietary graphical operating system developed and marketed by Microsoft.
+GenericName=Operating System
+Icon=/home/nchiang/.local/share/applications/icons/Windows.svg
+Exec=systemctl reboot --boot-loader-entry=windows.conf
+Type=Application

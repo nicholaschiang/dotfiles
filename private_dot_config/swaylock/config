@@ -4,8 +4,11 @@
 # Image path supports environment variables and shell expansions,
 # e.g. image=$HOME/Pictures/default.png
 #image=$HOME/Pictures/OPMcLaren_1_4k.jpg
-image=$HOME/Pictures/OP6_Red_01_4k.jpg
-scaling=stretch
+#image=$HOME/Pictures/OP6_Red_01_4k.jpg
+#image=$HOME/Pictures/OP6_01_4k.jpg
+image=$HOME/Pictures/background.png
+#scaling=stretch
+scaling=center
 #font=Iosevka
 font=Berkeley Mono
 font-size=14

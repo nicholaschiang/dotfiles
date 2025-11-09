@@ -76,8 +76,9 @@ client.placeholder $base03 $base02 $base2 $base03
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Requires: desktop-backgrounds-compat, swaybg
 #output * bg $HOME/Pictures/OPMcLaren_1_4k.jpg stretch #000000
-output * bg $HOME/Pictures/OP6_Red_01_4k.jpg stretch #000000
+#output * bg $HOME/Pictures/OP6_Red_01_4k.jpg stretch #000000
 #output * bg $HOME/Pictures/OP6_01_4k.jpg stretch #000000
+output * bg $HOME/Pictures/background.png center #000000
 
 #
 # Example configuration:

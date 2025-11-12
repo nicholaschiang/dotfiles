@@ -164,6 +164,9 @@ input "type:keyboard" {
     # Start bluetooth manager
     bindsym $mod+d exec rofi-bluetooth
 
+    # Connect AirPods Pro (I do this all the time)
+    bindsym $mod+Shift+d exec bluetoothctl connect 30:7A:D2:32:01:CF
+
     # Kill focused window
     bindsym $mod+Shift+q kill
 

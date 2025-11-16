@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# The primary display (usually DP-1)
+primary=DP-1
+
+# The secondary display (usually HDMI-A-1)
+secondary=HDMI-A-1
+
+# Move from 9 to 1 so that we end at workspace 1
+swaymsg workspace 9, move workspace to $primary
+swaymsg workspace 8, move workspace to $primary
+swaymsg workspace 7, move workspace to $primary
+swaymsg workspace 6, move workspace to $primary
+swaymsg workspace 5, move workspace to $primary
+swaymsg workspace 4, move workspace to $primary
+swaymsg workspace 3, move workspace to $primary
+swaymsg workspace 2, move workspace to $primary
+swaymsg workspace 1, move workspace to $primary
+
+# Move workspace 10 to TV and launch btop on it
+swaymsg workspace 10, move workspace to $secondary
+gtk-launch btop
+sleep 0.25
+
+# Switch back to workspace 1
+swaymsg workspace number 1

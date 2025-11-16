@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Screen record an output (i.e. the entire display).
+# https://github.com/ammen99/wf-recorder
+# https://github.com/emersion/slurp
+wf-recorder -c libx264rgb -f "$XDG_SCREENSHOTS_DIR/$(date '+%Y-%m-%d-%H:%M:%S').mp4" -g "$(slurp -o -r -c '#dc322fff')"

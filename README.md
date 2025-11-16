@@ -69,6 +69,31 @@ First, [install Arch](https://wiki.archlinux.org/title/Installation_guide).
 I referenced these two guides ([1](https://gist.github.com/mjkstra/96ce7a5689d753e7a6bdd92cdc169bae), [2](https://gist.github.com/uosyph/bb7db7606c4916535081ae7b0f6bff2d)) when I installed Arch alongside an existing Windows 11 installation.
 I had to resolve an issue with GRUB and LUKS encryption [this way](https://unix.stackexchange.com/questions/764872/luks-password-correct-but-not-accepted).
 
+### Essentials
+
+To configure WiFi:
+
+```
+❯ iwctl
+```
+
+To configure Bluetooth:
+
+```
+❯ bluetoothctl
+```
+
+To inspect the system:
+
+```
+❯ btop
+❯ hostnamectl
+❯ fastfetch
+❯ neofetch
+❯ uname -r
+❯ pacman -Qs
+```
+
 ### Boot Sequence
 
 I no longer use GRUB (it is [slow](https://wiki.cachyos.org/installation/boot_managers/#cons-2) and [bloated](https://github.com/limine-bootloader/limine/blob/v8.x/PHILOSOPHY.md#why-not-support-filesystem-x-or-feature-y-eg-luks-lvm)).

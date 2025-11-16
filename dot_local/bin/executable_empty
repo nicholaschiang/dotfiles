@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+for i in {1..500}; do echo; done
+printf '\033[?25l'
+sleep infinity

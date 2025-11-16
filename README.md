@@ -236,7 +236,49 @@ Type=Application
 DesktopNames=sway;wlroots
 ```
 
-I added the `--unsupported-gpu` option which is required to use the proprietary [`nvidia`](https://archlinux.org/packages/?name=nvidia) GPU drivers with [`sway`](https://wiki.archlinux.org/title/Sway#From_a_display_manager).
+I added the `--unsupported-gpu` option which is required to use the [`nvidia-open`](https://archlinux.org/packages/?name=nvidia-open) GPU drivers with [`sway`](https://wiki.archlinux.org/title/Sway#From_a_display_manager).
+
+### Graphical Login
+
+I use [Plymouth](https://wiki.archlinux.org/title/Plymouth) to enter my disk decryption password on login.
+
+In `/etc/mkinitcpio.conf`:
+
+```
+HOOKS=(base udev autodetect microcode modconf kms keyboard keymap consolefont block plymouth encrypt filesystems fsck)
+```
+
+To ensure the [`nvidia-open`](https://archlinux.org/packages/?name=nvidia-open) GPU drivers [are loaded before](https://wiki.archlinux.org/title/NVIDIA#Early_loading) Plymouth runs:
+
+In `/etc/modprobe.d/nvidia.conf`:
+
+```
+options nvidia_drm modeset=1
+```
+
+In `/etc/mkinitcpio.conf`:
+
+```
+MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm btrfs)
+```
+
+...these changes were inspired by [this Omarchy script](https://github.com/basecamp/omarchy/blob/cfbc71c1171cec907383d2a9623e8d5743f96764/install/config/hardware/nvidia.sh).
+
+I then [regenerated](https://wiki.archlinux.org/title/Mkinitcpio#Manual_generation) the [initramfs](https://wiki.archlinux.org/title/Arch_boot_process#initramfs):
+
+```
+❯ sudo mkinitcpio -P
+```
+
+I have a [2023 ASUS ROG Zephyrus M16](https://rog.asus.com/us/laptops/rog-zephyrus/rog-zephyrus-m16-2023-series/spec/) ([GU604VI-M16.I94070](https://kelaptop.com/en/asus-rog-zephyrus-m16-gu604vi-i94070-gu604vi-m16-i94070)).
+I had to go into the BIOS and set the display mode to "dGPU" (to always use the discrete NVIDIA 4070 laptop GPU).
+I had to switch my primary [LG 45GX950A-B display](https://www.lg.com/ca_en/monitors/gaming/45gx950a-b/) cable to the USB 3.2 Gen2 Type-C with DisplayPort 1.4 port (right side).
+This USB-C port (right side) is [connected to the discrete GPU](https://www.reddit.com/r/ZephyrusM16/comments/o70if7/thunderbolt_on_the_m16/) while the USB 4 Type-C with Thunderbolt 4 port (left side) is connected to the integrated Intel GPU.
+I have a secondary display (a [65" LG TV](https://www.lg.com/us/tvs/lg-oled65c3pua-oled-4k-tv) mounted above my desk) connected to the HDMI 2.1 port (left side).
+This HDMI port is also connected to the discrete GPU.
+Other Zephyrus laptops [have similar port configurations](https://rog-forum.asus.com/t5/gaming-notebooks/zephyrus-g16-gu605cw-dgpu-external-monitor-not-recognized/td-p/1093855).
+
+[![Port Selection](./docs/asus-rog-zephyrus-m16-2023-ports.jpg)](https://faq.windowstip.com/what-port-on-a-asus-rog-zephyrus-m16-2023/)
 
 ### Tooling
 

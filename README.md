@@ -208,6 +208,36 @@ sudo rm -rf /boot/grub /boot/efi/grub
 
 I booted from a USB to move `/boot/efi` to `/boot` by editing `/etc/fstab` and removing the contents of `/boot`.
 
+### Display Manager
+
+I use [SDDM](https://wiki.archlinux.org/title/SDDM) to [automatically login](https://wiki.archlinux.org/title/SDDM#Autologin) and launch `sway` after disk decryption.
+
+```
+❯ yay -S sddm
+❯ sudo systemctl enable sddm.service
+```
+
+In `/etc/sddm.conf.d/autologin.conf`:
+
+```
+[Autologin]
+User=nchiang
+Session=sway
+```
+
+In `/usr/share/wayland-sessions/sway.desktop`:
+
+```
+[Desktop Entry]
+Name=Sway
+Comment=An i3-compatible Wayland compositor
+Exec=sway --unsupported-gpu
+Type=Application
+DesktopNames=sway;wlroots
+```
+
+I added the `--unsupported-gpu` option which is required to use the proprietary [`nvidia`](https://archlinux.org/packages/?name=nvidia) GPU drivers with [`sway`](https://wiki.archlinux.org/title/Sway#From_a_display_manager).
+
 ### Tooling
 
 Then, from your fresh Arch installation, install [`yay`](https://github.com/Jguer/yay?tab=readme-ov-file#installation):

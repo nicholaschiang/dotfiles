@@ -71,6 +71,7 @@ Plug 'terrastruct/d2-vim'
 Plug 'evanleck/vim-svelte'
 Plug 'NoahTheDuke/vim-just'
 Plug 'wuelnerdotexe/vim-astro'
+Plug 'benknoble/vim-racket'
 
 " Automatic code linting w/ ALE 
 Plug 'dense-analysis/ale'

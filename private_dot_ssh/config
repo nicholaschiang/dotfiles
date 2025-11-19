@@ -15,6 +15,12 @@ Host moat
     IdentityFile ~/.ssh/id_ed25519
     ForwardAgent yes
 
+Host schizo
+    HostName schizo.cs.byu.edu
+    User nhchiang
+    IdentityFile ~/.ssh/id_ed25519
+    ForwardAgent yes
+
 Host atlantic
     ForwardX11 yes
     ForwardX11Trusted yes
@@ -27,3 +33,9 @@ Host arctic
     User nchiang
     ForwardX11 yes
     ForwardX11Trusted yes
+
+Host mbp
+    HostName nicholass-mbp
+    User nicholas.chiang
+    IdentityFile ~/.ssh/id_ed25519
+    ForwardAgent yes

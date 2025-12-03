@@ -3,4 +3,4 @@
 # Screen record a window.
 # https://github.com/ammen99/wf-recorder
 # https://github.com/emersion/slurp
-wf-recorder -c libx264rgb -f "$XDG_SCREENSHOTS_DIR/$(date '+%Y-%m-%d-%H:%M:%S').mp4" -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | "\(.rect.x+.window_rect.x),\(.rect.y+.window_rect.y) \(.window_rect.width)x\(.window_rect.height)"' | slurp -c '#dc322fff')"
+wf-recorder -f "$XDG_SCREENSHOTS_DIR/$(date '+%Y-%m-%d-%H:%M:%S').mp4" -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | "\(.rect.x+.window_rect.x),\(.rect.y+.window_rect.y) \(.window_rect.width)x\(.window_rect.height)"' | slurp -c '#dc322fff')"

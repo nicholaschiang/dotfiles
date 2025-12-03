@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=iCloud Photos
+Comment=iCloud Photos
+Exec=chromium --new-window --ozone-platform=wayland --app="https://www.icloud.com/photos/" --name="iCloud Photos" --class="iCloud Photos"
+Terminal=false
+Type=Application
+Icon=/home/nchiang/.local/share/applications/icons/iCloud Photos.png
+StartupNotify=true

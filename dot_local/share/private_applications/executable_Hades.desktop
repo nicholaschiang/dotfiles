@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Hades
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/1145360
+Icon=steam_icon_1145360
+Terminal=false
+Type=Application
+Categories=Game;

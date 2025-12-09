@@ -1,0 +1,4 @@
+#!/usr/bin/env fish
+# Uses https://github.com/ankitpokhrel/jira-cli to create a Jira ticket using
+# git commit messages in the current branch. I hate Jira.
+jira issue create --type "Story" --summary "$(git show -s --format='%s')" --body "$(git clog HEAD...main)" --assignee "$(git config user.email)" --no-input

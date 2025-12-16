@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Copilot
+Comment=Copilot is the best money tracker - on iPhone, iPad, Mac, and Web.
+GenericName=Money Tracker
+Exec=chromium --new-window --ozone-platform=wayland --app="https://app.copilot.money" --name="Copilot" --class="Copilot"
+Terminal=false
+Type=Application
+Icon=/home/nchiang/.local/share/applications/icons/Copilot.png
+StartupNotify=true

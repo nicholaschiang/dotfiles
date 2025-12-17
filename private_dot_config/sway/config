@@ -354,6 +354,11 @@ for_window {
 # https://wiki.archlinux.org/title/Sway#Manage_Sway-specific_daemons_with_systemd
 exec_always systemctl --user restart sway-session.target
 
+# Set dark mode
+# https://wiki.archlinux.org/title/Dark_mode_switching
+exec_always gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita:dark'
+exec_always gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
 # Include configs from 3 locations:
 #  - /usr/share/sway/config.d
 #  - /etc/sway/config.d

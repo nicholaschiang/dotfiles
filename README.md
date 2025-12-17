@@ -772,6 +772,16 @@ Finally, you'll probably want to launch [`sway`](https://swaywm.org/):
 sway
 ```
 
+### Icons
+
+I configured [`starship`](https://starship.rs/presets/nerd-font) to use [nerd fonts](https://starship.rs/presets/nerd-font).
+
+The `waybar` uses `font-awesome` for its icons.
+
+```
+yay -S otf-font-awesome ttf-nerd-fonts-symbols
+```
+
 ### Fan Curves
 
 I configure fan curves on my laptop with [`asusctl`](https://asus-linux.org/):

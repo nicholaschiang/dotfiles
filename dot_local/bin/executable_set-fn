@@ -1,0 +1,4 @@
+#!/bin/sh
+echo "Setting Fn Mode to 2 (normally function keys, switchable to media keys by holding Fn key)"
+sudo sh -c 'echo 2 > /sys/module/hid_apple/parameters/fnmode'
+echo "Done! You can switch back to media keys by running set-media"

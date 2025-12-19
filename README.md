@@ -782,6 +782,15 @@ The `waybar` uses `font-awesome` for its icons.
 yay -S otf-font-awesome ttf-nerd-fonts-symbols
 ```
 
+### Emojis
+
+I have an iPhone (blue bubbles matter to me, unfortunately).
+I am used to [the Apple emoji set](https://github.com/samuelngs/apple-emoji-linux).
+
+```
+yay -S ttf-apple-emoji
+```
+
 ### Fan Curves
 
 I configure fan curves on my laptop with [`asusctl`](https://asus-linux.org/):

@@ -7,13 +7,20 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
 
--- Open a new window with mod+enter
 config.keys = {
+  -- Open a new window with mod+enter (in the current directory)
   {
     key = 'Enter',
     mods = 'SUPER',
     action = wezterm.action.SpawnWindow
-  }
+  },
+  -- From Claude Code setup
+  -- https://github.com/wezterm/wezterm/discussions/5856#discussioncomment-14578639
+  {
+    key = 'Enter',
+    mods = 'SHIFT',
+    action = wezterm.action{SendString='\x1b\r'}
+  },
 }
 
 -- Spawn a fish shell in login mode

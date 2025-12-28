@@ -31,6 +31,7 @@
   co = checkout
   ec = config --global -e
   up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+  reset-author = rebase -r -i main --exec \"git commit --amend --no-edit --reset-author\"
   cob = checkout -b
   undo = reset HEAD~1 --mixed
   amend = commit -a --amend
@@ -42,6 +43,7 @@
   bdone = "!f() { git checkout ${1-main} && git up && git bclean ${1-main}; }; f"
   glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
   clog = "!git log --pretty=\"%C(yellow)**%s**%n%Creset%n%b%n---\"" 
+  copy = "!git clog main..HEAD | wl-copy"
   di = diff --color-words
   dic = diff --color-words=.
   stats = shortlog -sen --no-merges
@@ -86,3 +88,6 @@
 
 [includeIf "gitdir/i:~/repos/sophia/"]
   path = repos/sophia/.gitconfig
+
+[init]
+  defaultBranch = main

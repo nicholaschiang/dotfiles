@@ -8,6 +8,7 @@ set -gx COLORTERM 24bit
 set -gx GRAB_HOME ~/repos
 set -gx OMAKASEBLUE_PATH "/home/$USER/.local/share/omakase-blue"
 set -gx XDG_SCREENSHOTS_DIR "$HOME/Pictures/Screenshots"
+set -gx CHROME_EXECUTABLE chromium
 
 # Enable dark theme system-wide
 # https://wiki.archlinux.org/title/Dark_mode_switching

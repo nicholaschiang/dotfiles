@@ -845,11 +845,11 @@ USB_PASSTHROUGH="${USB_PASSTHROUGH} -usb -device usb-ehci,id=ehci -device usb-ho
 ```
 
 ...I also followed [these instructions](https://oneclick-macos-simple-kvm.notaperson535.is-a.dev/docs/guide-phone-passthrough/), but I'm not sure how relevant those changes actually were.
-After connecting my iPhone, restarting the virtual machine, and clicking "Trust This Computer" in iOS, the macOS virtual machine finally detected my iPhone:
+After connecting my iPhone, restarting the virtual machine, and clicking "Trust This Computer" in iOS, the VM detected my iPhone:
 
 ![iPhone Detected](./docs/iphone-usb-detected.png)
 
-To be able to login with my Apple ID in Xcode (which is required to sign apps for installation on my iPhone), I had to follow [these instructions](https://github.com/quickemu-project/quickemu/issues/1547#issuecomment-2708376222) and use [`./GenSMBIOS.command`](https://github.com/corpnewt/GenSMBIOS) to ensure my virtual machine has a unique serial number.
+To be able to login with my Apple ID in Xcode (which is required to sign apps for installation on my iPhone), I had to follow [these instructions](https://github.com/quickemu-project/quickemu/issues/1547#issuecomment-2708376222) and use [`./GenSMBIOS.command`](https://github.com/corpnewt/GenSMBIOS) to ensure my virtual machine had a unique serial number.
 I also followed [these instructions](https://github.com/quickemu-project/quickemu/wiki/03-Create-macOS-virtual-machines#apple-id-login) and used [`qe_mac_apid`](https://github.com/quickemu-project/qe_mac_apid) to modify the bootloader file with a unique serial number.
 I'm not sure which approach actually solved the issue.
 I did both (probably unnecessarily).
@@ -966,12 +966,16 @@ Volume EFI on /dev/disk1s1 mounted
                 ...
 ```
 
-...after rebooting the virtual machine, I was able to login with my Apple ID in Xcode ("Xcode > Settings > Apple Accounts > Add Apple Account") and configure certificates ("Runner > Targets > Runner > Signing & Capabilities > Team > Nicholas Chiang (Personal Team)") for my Flutter "Runner" application (`open ~/repos/humble/ios/Runner.xcodeproj`).
+...after rebooting the virtual machine, I was able to login with my Apple ID in Xcode ("Xcode ❯ Settings ❯ Apple Accounts ❯ Add Apple Account") and configure certificates ("Runner ❯ Targets ❯ Runner ❯ Signing & Capabilities ❯ Team ❯ Nicholas Chiang (Personal Team)") for my Flutter "Runner" application (`open ~/repos/humble/ios/Runner.xcodeproj`).
 I set my "Bundle Identifier" to `com.nicholaschiang.humble`.
 I followed the instructions in the error message that appeared after running `flutter run` for the first time:
 
 ![Flutter Error](./docs/flutter-error.png)
 
-On my iPhone (running iOS 26.2), I had to go to "General > VPN & Device Management" and select my `apple@nicholaschiang.com` developer profile and click "Trust".
-I also had to go to "General > Transfer or Reset iPhone > Reset > Reset Network Settings" to resolve an issue where verifying applications resulted in a persistent "Unable to Verify App. An Internet connection is required to verify the trust of the developer."
-Once I did all of this, I was able to get the default `flutter create` application to run on my iPhone (both via `flutter run` and `flutter install`).
+On my iPhone (running iOS 26.2), I had to go to "General ❯ VPN & Device Management" and select my `apple@nicholaschiang.com` developer profile and click "Trust".
+I also had to go to "General ❯ Transfer or Reset iPhone ❯ Reset ❯ Reset Network Settings" to resolve an issue where verifying applications resulted in a persistent "Unable to Verify App. An Internet connection is required to verify the trust of the developer." error message.
+
+After all of this, I was able to get the default `flutter create` application to run on my iPhone (both via `flutter run` and `flutter install`).
+Now, I will investigate running macOS headless.
+All I really need to be able to do is `flutter install`, after all.
+Or, even better, `flutter run` on macOS with hot reload on my physical iPhone while editing the source from the host Arch Linux machine.

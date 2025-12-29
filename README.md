@@ -759,3 +759,219 @@ CPU: enabled: false, 30c:0%,62c:0%,66c:10%,70c:20%,74c:34%,78c:54%,78c:80%,78c:9
 GPU: enabled: false, 30c:0%,62c:0%,66c:10%,70c:20%,74c:34%,78c:54%,78c:80%,78c:94%
 MID: enabled: true, 30c:0%,62c:0%,66c:0%,70c:0%,74c:0%,78c:80%,78c:80%,78c:80%
 ```
+
+### Virtualization
+
+To run a macOS virtual machine on Arch (primarily to [sideload my own iOS applications](https://docs.flutter.dev/platform-integration/ios/setup) on my iPhone using Xcode), I use [QEMU](https://wiki.archlinux.org/title/QEMU)/[KVM](https://wiki.archlinux.org/title/KVM).
+I tried following [this popular OSX-KVM guide](https://github.com/kholia/OSX-KVM), but got stuck in an infinite loop where booting from my installation drive (which I named "Macintosh HD") kept bringing me back to the boot selection screen or macOS recovery.
+I also tried following [this guide to using OSX with Docker](https://github.com/sickcodes/Docker-OSX), but I encountered the same issues.
+Eventually, I got [Quickemu](https://github.com/quickemu-project/quickemu) to work after some fiddling (documented below).
+
+I turned off `dGPU only` in BIOS, as [the OSX-KVM guide](https://github.com/kholia/OSX-KVM?tab=readme-ov-file#installation-preparation) mentions that:
+
+> Modern NVIDIA GPUs are supported on HighSierra but not on later versions of macOS.
+
+...although that never fixed the issue with [OSX-KVM](https://github.com/kholia/OSX-KVM), it may or may not have affected my later success with [Quickemu](https://github.com/quickemu-project/quickemu).
+
+I had to install `quickemu-git` to resolve [this issue](https://github.com/quickemu-project/quickemu/issues/1648):
+
+```
+yay -S quickemu-git
+```
+
+I followed [these instructions](https://github.com/quickemu-project/quickemu/wiki/03-Create-macOS-virtual-machines) to setup a macOS `sonoma` virtual machine.
+
+```
+❯ quickget macos sonoma
+❯ quickemu --vm macos-sonoma.conf --width 2560 --height 1600
+Quickemu 4.9.8 using /usr/bin/qemu-system-x86_64 v10.1.2
+ - Host:     Arch Linux running Linux 6.18.2-arch2-1 beru
+ - CPU:      13th Gen Intel(R) Core(TM) i9-13900H
+ - CPU VM:   host, 1 Socket(s), 4 Core(s), 2 Thread(s)
+ - RAM VM:   10G RAM
+ - BOOT:     EFI (macOS), OVMF (OVMF_CODE.fd), SecureBoot (off).
+ - Disk:     macos-sonoma/disk.qcow2 (128G)
+ - Display:  SDL, VGA, GL (on), VirGL (off) @ (2560 x 1600)
+ - Sound:    intel-hda (hda-micro)
+ - ssh:      On host:  ssh user@localhost -p 22220
+ - 9P:       On guest: sudo mount_9p Public-nchiang
+ - 9P:       On host:  chmod 777 /home/nchiang/Public
+             Required for macOS integration 👆
+ - USB:      Host pass-through requested:
+             o Apple, Inc. iPhone 5/5C/5S/6/SE/7/8/X/XR on bus 003 device 008 is accessible.
+ - Network:  User (virtio-net-pci)
+/usr/bin/quickemu: line 621: warning: command substitution: ignored null byte in input
+/usr/bin/quickemu: line 621: warning: command substitution: ignored null byte in input
+ - Monitor:  On host:  socat -,echo=0,icanon=0 unix-connect:macos-sonoma/macos-sonoma-monitor.socket
+ - Process:  Started macos-sonoma.conf as macos-sonoma (5864)acos-sonoma/macos-sonoma-serial.socket
+```
+
+...where `macos-sonoma.conf` was slightly modified to support USB pass-through and increase performance (I bumped the default `ram` and `cpu_cores` configuration):
+
+```
+#!/usr/bin/quickemu --vm
+guest_os="macos"
+disk_img="macos-sonoma/disk.qcow2"
+img="macos-sonoma/RecoveryImage.img"
+disk_size="128G"
+macos_release="sonoma"
+ram="10G"
+cpu_cores="8"
+usb_devices=("05ac:12a8")
+```
+
+I found the relevant USB device by connecting my iPhone and then:
+
+```
+❯ lsusb
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 003 Device 003: ID 05ac:024f Apple, Inc. Aluminium Keyboard (ANSI)
+Bus 003 Device 004: ID 0b05:19b6 ASUSTek Computer, Inc. N-KEY Device
+Bus 003 Device 005: ID 1532:00aa Razer USA, Ltd Razer Basilisk V3 Pro
+Bus 003 Device 006: ID 3277:0018 Sonix Technology Co., Ltd. USB2.0 FHD UVC WebCam
+Bus 003 Device 007: ID 8087:0033 Intel Corp. AX211 Bluetooth
+Bus 003 Device 008: ID 05ac:12a8 Apple, Inc. iPhone 5/5C/5S/6/SE/7/8/X/XR
+Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+```
+
+I had to modify the `quickemu` executable a bit (following [this issue](https://github.com/quickemu-project/quickemu/issues/468#issuecomment-2844547083)):
+
+```
+❯ sudo vim $(which quickemu)
+# USB_PASSTHROUGH="${USB_PASSTHROUGH} -device usb-host,bus=hostpass.0,vendorid=0x${VENDOR_ID},productid=0x${PRODUCT_ID}"
+USB_PASSTHROUGH="${USB_PASSTHROUGH} -usb -device usb-ehci,id=ehci -device usb-host,bus=ehci.0,vendorid=0x${VENDOR_ID},productid=0x${PRODUCT_ID},guest-reset=false,id=iphone"
+```
+
+...I also followed [these instructions](https://oneclick-macos-simple-kvm.notaperson535.is-a.dev/docs/guide-phone-passthrough/), but I'm not sure how relevant those changes actually were.
+After connecting my iPhone, restarting the virtual machine, and clicking "Trust This Computer" in iOS, the macOS virtual machine finally detected my iPhone:
+
+![iPhone Detected](./docs/iphone-usb-detected.png)
+
+To be able to login with my Apple ID in Xcode (which is required to sign apps for installation on my iPhone), I had to follow [these instructions](https://github.com/quickemu-project/quickemu/issues/1547#issuecomment-2708376222) and use [`./GenSMBIOS.command`](https://github.com/corpnewt/GenSMBIOS) to ensure my virtual machine has a unique serial number.
+I also followed [these instructions](https://github.com/quickemu-project/quickemu/wiki/03-Create-macOS-virtual-machines#apple-id-login) and used [`qe_mac_apid`](https://github.com/quickemu-project/qe_mac_apid) to modify the bootloader file with a unique serial number.
+I'm not sure which approach actually solved the issue.
+I did both (probably unnecessarily).
+
+I also had to set the `kern.hv_vmm_present` kernel parameter to `0` by following [these instructions](https://forum.proxmox.com/threads/anyone-can-make-bluetooth-work-on-sonoma.153301/post-697832).
+I found the relevant volume via `diskutil` (the EFI partition on the disk that has the "Linux Filesystem"):
+
+```
+% sudo diskutil list
+Password:
+/dev/disk0 (internal, physical):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:      GUID_partition_scheme                        *137.4 GB   disk0
+   1:                        EFI EFI                     209.7 MB   disk0s1
+   2:                 Apple_APFS Container disk2         137.2 GB   disk0s2
+
+/dev/disk1 (internal, physical):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:      GUID_partition_scheme                        *402.7 MB   disk1
+   1:                        EFI EFI                     152.6 MB   disk1s1
+   2:           Linux Filesystem                         247.0 MB   disk1s2
+
+/dev/disk2 (synthesized):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:      APFS Container Scheme -                      +137.2 GB   disk2
+                                 Physical Store disk0s2
+   1:                APFS Volume Macintosh HD - Data     53.0 GB    disk2s1
+   2:                APFS Volume Preboot                 2.7 GB     disk2s2
+   3:                APFS Volume Recovery                1.3 GB     disk2s3
+   4:                APFS Volume Macintosh HD            11.3 GB    disk2s4
+   5:              APFS Snapshot com.apple.os.update-... 11.3 GB    disk2s4s1
+   6:                APFS Volume VM                      1.1 MB     disk2s6
+```
+
+I mounted the volume:
+
+```
+% sudo diskutil mount /dev/disk1s1
+Volume EFI on /dev/disk1s1 mounted
+% sudo vim /Volumes/EFI/EFI/OC/config.plist
+```
+
+...and then appended the relevant patches to `/Volumes/EFI/EFI/OC/config.plist`:
+
+```
+    <dict>
+        ...
+        <key>Kernel</key>
+        <dict>
+            ...
+            <key>Patch</key>
+            <array>
+                ...
+                <dict>
+                    <key>Arch</key>
+                    <string>x86_64</string>
+                    <key>Base</key>
+                    <string></string>
+                    <key>Comment</key>
+                    <string>Sonoma VM BT Enabler - PART 1 of 2 - Patch kern.hv_vmm_present=0</string>
+                    <key>Count</key>
+                    <integer>1</integer>
+                    <key>Enabled</key>
+                    <true/>
+                    <key>Find</key>
+                    <data>aGliZXJuYXRlaGlkcmVhZHkAaGliZXJuYXRlY291bnQA</data>
+                    <key>Identifier</key>
+                    <string>kernel</string>
+                    <key>Limit</key>
+                    <integer>0</integer>
+                    <key>Mask</key>
+                    <data></data>
+                    <key>MaxKernel</key>
+                    <string></string>
+                    <key>MinKernel</key>
+                    <string>20.4.0</string>
+                    <key>Replace</key>
+                    <data>aGliZXJuYXRlaGlkcmVhZHkAaHZfdm1tX3ByZXNlbnQA</data>
+                    <key>ReplaceMask</key>
+                    <data></data>
+                    <key>Skip</key>
+                    <integer>0</integer>
+                </dict>
+                <dict>
+                    <key>Arch</key>
+                    <string>x86_64</string>
+                    <key>Base</key>
+                    <string></string>
+                    <key>Comment</key>
+                    <string>Sonoma VM BT Enabler - PART 2 of 2 - Patch kern.hv_vmm_present=0</string>
+                    <key>Count</key>
+                    <integer>1</integer>
+                    <key>Enabled</key>
+                    <true/>
+                    <key>Find</key>
+                    <data>Ym9vdCBzZXNzaW9uIFVVSUQAaHZfdm1tX3ByZXNlbnQA</data>
+                    <key>Identifier</key>
+                    <string>kernel</string>
+                    <key>Limit</key>
+                    <integer>0</integer>
+                    <key>Mask</key>
+                    <data></data>
+                    <key>MaxKernel</key>
+                    <string></string>
+                    <key>MinKernel</key>
+                    <string>22.0.0</string>
+                    <key>Replace</key>
+                    <data>Ym9vdCBzZXNzaW9uIFVVSUQAaGliZXJuYXRlY291bnQA</data>
+                    <key>ReplaceMask</key>
+                    <data></data>
+                    <key>Skip</key>
+                    <integer>0</integer>
+                </dict>
+                ...
+```
+
+...after rebooting the virtual machine, I was able to login with my Apple ID in Xcode ("Xcode > Settings > Apple Accounts > Add Apple Account") and configure certificates ("Runner > Targets > Runner > Signing & Capabilities > Team > Nicholas Chiang (Personal Team)") for my Flutter "Runner" application (`open ~/repos/humble/ios/Runner.xcodeproj`).
+I set my "Bundle Identifier" to `com.nicholaschiang.humble`.
+I followed the instructions in the error message that appeared after running `flutter run` for the first time:
+
+![Flutter Error](./docs/flutter-error.png)
+
+On my iPhone (running iOS 26.2), I had to go to "General > VPN & Device Management" and select my `apple@nicholaschiang.com` developer profile and click "Trust".
+I also had to go to "General > Transfer or Reset iPhone > Reset > Reset Network Settings" to resolve an issue where verifying applications resulted in a persistent "Unable to Verify App. An Internet connection is required to verify the trust of the developer."
+Once I did all of this, I was able to get the default `flutter create` application to run on my iPhone (both via `flutter run` and `flutter install`).

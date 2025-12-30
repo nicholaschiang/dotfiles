@@ -1,3 +1,10 @@
+Host macos
+    HostName localhost
+    Port 22220
+    User nchiang
+    IdentityFile ~/.ssh/id_ed25519
+    ForwardAgent yes
+
 Host watchog
     HostName watchog.stanford.edu
     User nchiang

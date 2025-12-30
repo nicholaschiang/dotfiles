@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Divinity: Original Sin 2
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/435150
+Icon=steam_icon_435150
+Terminal=false
+Type=Application
+Categories=Game;

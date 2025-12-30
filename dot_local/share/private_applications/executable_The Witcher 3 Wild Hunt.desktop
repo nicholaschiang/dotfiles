@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=The Witcher 3: Wild Hunt
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/292030
+Icon=steam_icon_292030
+Terminal=false
+Type=Application
+Categories=Game;

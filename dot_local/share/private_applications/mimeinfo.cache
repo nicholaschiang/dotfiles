@@ -1,1 +1,3 @@
 [MIME Cache]
+x-scheme-handler/sgnl=signal-desktop.desktop;
+x-scheme-handler/signalcaptcha=signal-desktop.desktop;

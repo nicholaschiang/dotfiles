@@ -979,3 +979,40 @@ After all of this, I was able to get the default `flutter create` application to
 Now, I will investigate running macOS headless.
 All I really need to be able to do is `flutter install`, after all.
 Or, even better, `flutter run` on macOS with hot reload on my physical iPhone while editing the source from the host Arch Linux machine.
+
+I was able to SSH into the virtual machine and, after unlocking the login keychain, successfully `flutter run` from my host machine over SSH:
+
+```
+❯ ssh nchiang@localhost -p 22220
+nchiang in  macos-sonoma in ~/repos/humble is 󰏗 v1.0.0+1 via  took 18s
+❯ security unlock-keychain login.keychain
+password to unlock login.keychain:
+nchiang in  macos-sonoma in ~/repos/humble is 󰏗 v1.0.0+1 via  took 2s
+❯ flutter run
+Resolving dependencies...
+Downloading packages...
+  characters 1.4.0 (1.4.1 available)
+  matcher 0.12.17 (0.12.18 available)
+  material_color_utilities 0.11.1 (0.13.0 available)
+  test_api 0.7.7 (0.7.8 available)
+Got dependencies!
+4 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Launching lib/main.dart on iPhone in debug mode...
+Automatically signing iOS for device deployment using specified development team in Xcode project: 8H39634522
+Running Xcode build...
+Xcode build done.                                            9.4s
+Installing and launching...                                        15.0s
+Syncing files to device iPhone...                                   39ms
+
+Flutter run key commands.
+r Hot reload. 🔥🔥🔥
+R Hot restart.
+h List all available interactive commands.
+d Detach (terminate "flutter run" but leave application running).
+c Clear the screen
+q Quit (terminate the application on the device).
+
+A Dart VM Service on iPhone is available at: http://127.0.0.1:49587/_zxQcRmPapU=/
+The Flutter DevTools debugger and profiler on iPhone is available at: http://127.0.0.1:49587/_zxQcRmPapU=/devtools/?uri=ws://127.0.0.1:49587/_zxQcRmPapU=/ws
+```

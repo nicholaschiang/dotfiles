@@ -76,9 +76,6 @@ Plug 'benknoble/vim-racket'
 " Automatic code linting w/ ALE 
 Plug 'dense-analysis/ale'
 
-" Automatically reload Flutter app on save
-Plug 'thosakwe/vim-flutter'
-
 " Use git from w/in Vim
 Plug 'tpope/vim-fugitive'
 
@@ -555,14 +552,13 @@ let g:coc_config_home = '~/.vim'
 " => Flutter auto-reload 
 """"""""""""""""""""""""""""""
 " Add shortcuts to hot reload 
-nnoremap <leader>fa :FlutterRun -d all<cr>
-nnoremap <leader>fq :FlutterQuit<cr>
-nnoremap <leader>fr :FlutterHotReload<cr>
-nnoremap <leader>fR :FlutterHotRestart<cr>
-nnoremap <leader>fD :FlutterVisualDebug<cr>
-
-" Do not automatically open logs
-let g:flutter_show_log_on_run = 0
+" https://github.com/iamcco/coc-flutter?tab=readme-ov-file#commands
+nnoremap <leader>fa :CocCommand flutter.run<cr>
+nnoremap <leader>fl :edit output:///flutter-dev<cr>
+nnoremap <leader>fq :CocCommand flutter.dev.quit<cr>
+nnoremap <leader>fr :CocCommand flutter.dev.hotReload<cr>
+nnoremap <leader>fR :CocCommand flutter.dev.hotRestart<cr>
+nnoremap <leader>fD :CocCommand flutter.dev.openProfiler<cr>
 
 
 """""""""""""""""""""""""""""

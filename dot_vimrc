@@ -86,9 +86,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
 
-" LLMs (because "good luck with your career if you don't use em" —CA).
-Plug 'github/copilot.vim'
-Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
+" LLMs (because 'good luck with your career if you don't use em' —CA).
+"Plug 'github/copilot.vim'
+"Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 
 " Initialize plugin system
 call plug#end()
@@ -457,18 +457,18 @@ set t_Cs=
 " Use Ctrl-J to trigger Copilot autocomplete instead of <Tab>
 " For now, I find the autocomplete provided by Coc to be more useful and faster
 "imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
-let g:copilot_no_tab_map = v:true
-autocmd BufNewFile,BufRead * Copilot disable
+"let g:copilot_no_tab_map = v:true
+"autocmd BufNewFile,BufRead * Copilot disable
 
 " Do not look for a package.json as monorepos will have multiple deeply nested.
-let g:codeium_workspace_root_hints = ['.bzr','.git','.hg','.svn','_FOSSIL_']
-let g:codeium_disable_bindings = v:true
-inoremap <script><silent><nowait><expr> <C-j> codeium#Accept()
+"let g:codeium_workspace_root_hints = ['.bzr','.git','.hg','.svn','_FOSSIL_']
+"let g:codeium_disable_bindings = v:true
+"inoremap <script><silent><nowait><expr> <C-j> codeium#Accept()
 
 " I don't want an LLM to write documentation for me.
-let g:codeium_filetypes = {
-    \ "markdown": v:false,
-    \ }
+"let g:codeium_filetypes = {
+    "\ "markdown": v:false,
+    "\ }
 
 
 """"""""""""""""""""""""""""""
@@ -606,6 +606,7 @@ let g:ale_fixers = {
       \ 'java': ['google_java_format'],
       \ 'cpp': ['astyle'],
       \ 'c': ['astyle'],
+      \ 'css': ['prettier'],
       \ }
 let g:ale_linters = { 
       \ 'svelte': ['eslint', 'svelteserver'],

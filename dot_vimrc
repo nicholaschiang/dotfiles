@@ -591,18 +591,18 @@ let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 0
 let g:ale_fixers = { 
       \ 'sql': ['pgformatter', 'sqlformat'],
-      \ 'html': ['prettier'],
-      \ 'svelte': ['eslint', 'prettier'],
-      \ 'javascript': ['eslint', 'prettier'],
-      \ 'typescript': ['eslint', 'prettier'],
-      \ 'typescriptreact': ['eslint', 'prettier'],
+      \ 'html': ['prettier', 'biome'],
+      \ 'svelte': ['eslint', 'prettier', 'biome'],
+      \ 'javascript': ['eslint', 'prettier', 'biome'],
+      \ 'typescript': ['eslint', 'prettier', 'biome'],
+      \ 'typescriptreact': ['eslint', 'prettier', 'biome'],
       \ 'python': ['black'],
-      \ 'json': ['prettier'],
+      \ 'json': ['prettier', 'biome'],
       \ 'dart': ['dart-format'],
       \ 'java': ['google_java_format'],
       \ 'cpp': ['astyle'],
       \ 'c': ['astyle'],
-      \ 'css': ['prettier'],
+      \ 'css': ['prettier', 'biome'],
       \ }
 let g:ale_linters = { 
       \ 'svelte': ['eslint', 'svelteserver'],

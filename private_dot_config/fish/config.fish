@@ -21,6 +21,8 @@ set -g fish_greeting
 
 # Path updates
 fish_add_path $HOME/.local/bin
+fish_add_path $HOME/.local/flutter/bin
+fish_add_path $HOME/.local/dart-sdk/bin
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.poetry/bin
 fish_add_path $OMAKASEBLUE_PATH/bin

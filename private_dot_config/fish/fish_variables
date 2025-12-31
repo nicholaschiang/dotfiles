@@ -1,4 +1,4 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR __fish_initialized:4300
-SETUVAR fish_user_paths:/usr/share/sway\x2dcontrib\x1e/home/nchiang/\x2ecargo/bin\x1e/home/nchiang/\x2elocal/bin\x1e/Users/nicholas\x2echiang/\x2ecargo/bin\x1e/Users/nicholas\x2echiang/\x2elocal/bin\x1e/home/linuxbrew/\x2elinuxbrew/sbin\x1e/home/linuxbrew/\x2elinuxbrew/bin\x1e/home/nchiang/\x2elocal/share/omakase\x2dblue/bin\x1e/var/home/nchiang/\x2ecargo/bin\x1e/var/home/nchiang/\x2elocal/bin\x1e/var/home/nchiang/\x2efzf/bin
+SETUVAR fish_user_paths:/home/nchiang/\x2elocal/dart\x2dsdk/bin\x1e/home/nchiang/\x2elocal/flutter/bin\x1e/usr/share/sway\x2dcontrib\x1e/home/nchiang/\x2ecargo/bin\x1e/home/nchiang/\x2elocal/bin\x1e/Users/nicholas\x2echiang/\x2ecargo/bin\x1e/Users/nicholas\x2echiang/\x2elocal/bin\x1e/home/linuxbrew/\x2elinuxbrew/sbin\x1e/home/linuxbrew/\x2elinuxbrew/bin\x1e/home/nchiang/\x2elocal/share/omakase\x2dblue/bin\x1e/var/home/nchiang/\x2ecargo/bin\x1e/var/home/nchiang/\x2elocal/bin\x1e/var/home/nchiang/\x2efzf/bin

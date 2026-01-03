@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Colors
+Comment=Colors
+Exec=/home/nchiang/repos/colors/build/linux/x64/release/bundle/colors
+Terminal=false
+Type=Application
+Icon=/home/nchiang/.local/share/applications/icons/Colors.png
+StartupNotify=true

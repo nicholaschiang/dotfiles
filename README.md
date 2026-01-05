@@ -94,6 +94,22 @@ To inspect the system:
 ❯ pacman -Qs
 ```
 
+### WiFi
+
+In `/var/lib/iwd/eduroam.8021x`:
+
+```
+[Security]
+EAP-Method=PEAP
+EAP-Identity=anonymous@byu.edu
+EAP-PEAP-Phase2-Method=MSCHAPV2
+EAP-PEAP-Phase2-Identity=nhchiang@byu.edu
+EAP-PEAP-Phase2-Password=REPLACE_ME
+
+[Settings]
+AutoConnect=true
+```
+
 ### Boot Sequence
 
 I no longer use GRUB (it is [slow](https://wiki.cachyos.org/installation/boot_managers/#cons-2) and [bloated](https://github.com/limine-bootloader/limine/blob/v8.x/PHILOSOPHY.md#why-not-support-filesystem-x-or-feature-y-eg-luks-lvm)).

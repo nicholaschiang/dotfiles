@@ -83,6 +83,10 @@ Plug 'tpope/vim-fugitive'
 " Use Conquer of Completion for VSCode-like features
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
+" :CocInstall coc-tsserver
+" :CocInstall coc-highlight
+" :CocInstall coc-jedi
+" :CocInstall coc-flutter
 
 " LLMs (because 'good luck with your career if you don't use em' —CA).
 "Plug 'github/copilot.vim'
@@ -204,6 +208,12 @@ let g:svelte_preprocessors = ['typescript']
 " Enable Typescript syntax highlighting
 " See: https://github.com/leafOfTree/vim-svelte-plugin?tab=readme-ov-file
 let g:vim_svelte_plugin_use_typescript = 1
+
+" Enable Rhombus/Shplait language highlighting
+" See: https://github.com/benknoble/vim-racket/issues/13
+" See: https://docs.racket-lang.org/shplait/index.html
+" See: https://docs.racket-lang.org/rhombus-guide/index.html
+au BufRead,BufNewFile *.rhm set filetype=shplait
 
 " Enable Astro TypeScript highlighting
 let g:astro_typescript = 'enable'
@@ -554,7 +564,7 @@ let g:coc_config_home = '~/.vim'
 """"""""""""""""""""""""""""""
 " Add shortcuts to hot reload 
 " https://github.com/iamcco/coc-flutter?tab=readme-ov-file#commands
-nnoremap <leader>fa :CocCommand flutter.run<cr>
+nnoremap <leader>r :CocCommand flutter.run -d linux<cr>
 nnoremap <leader>fl :edit output:///flutter-dev<cr>
 nnoremap <leader>fq :CocCommand flutter.dev.quit<cr>
 nnoremap <leader>fr :CocCommand flutter.dev.hotReload<cr>
@@ -592,18 +602,18 @@ let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 0
 let g:ale_fixers = { 
       \ 'sql': ['pgformatter', 'sqlformat'],
-      \ 'html': ['prettier', 'biome'],
-      \ 'svelte': ['eslint', 'prettier', 'biome'],
-      \ 'javascript': ['eslint', 'prettier', 'biome'],
-      \ 'typescript': ['eslint', 'prettier', 'biome'],
-      \ 'typescriptreact': ['eslint', 'prettier', 'biome'],
+      \ 'html': ['prettier'],
+      \ 'svelte': ['eslint', 'prettier'],
+      \ 'javascript': ['eslint', 'prettier'],
+      \ 'typescript': ['eslint', 'prettier'],
+      \ 'typescriptreact': ['eslint', 'prettier'],
       \ 'python': ['black'],
-      \ 'json': ['prettier', 'biome'],
+      \ 'json': ['prettier'],
       \ 'dart': ['dart-format'],
       \ 'java': ['google_java_format'],
       \ 'cpp': ['astyle'],
       \ 'c': ['astyle'],
-      \ 'css': ['prettier', 'biome'],
+      \ 'css': ['prettier'],
       \ }
 let g:ale_linters = { 
       \ 'svelte': ['eslint', 'svelteserver'],

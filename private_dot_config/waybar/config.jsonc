@@ -135,7 +135,7 @@
   },
   "bluetooth": {
     // "controller": "controller1",
-    "format": " {status}",
+    "format": "{status} ",
     "format-disabled": "",
     "format-connected": "{num_connections} ",
     "tooltip-format": "{controller_alias}\t{controller_address}",

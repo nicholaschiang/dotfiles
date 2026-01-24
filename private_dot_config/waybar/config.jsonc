@@ -66,7 +66,7 @@
     "format": "{}% "
   },
   "temperature": {
-    "thermal-zone": 8, // x86_pkg_temp
+    // "thermal-zone": 8, // x86_pkg_temp
     // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
     "critical-threshold": 80,
     // "format-critical": "{temperatureC}°C {icon}",

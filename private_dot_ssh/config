@@ -1,3 +1,4 @@
+# Hackintosh virtual machine
 Host macos
     HostName localhost
     Port 22220
@@ -5,12 +6,14 @@ Host macos
     IdentityFile ~/.ssh/id_ed25519
     ForwardAgent yes
 
+# Stanford SING research group lab machine
 Host watchog
     HostName watchog.stanford.edu
     User nchiang
     ProxyJump sing.stanford.edu
     LocalForward 8890 127.0.0.1:8890
 
+# BYU undergraduate lab machines
 Host paris
     HostName paris.cs.byu.edu
     User nhchiang
@@ -28,6 +31,7 @@ Host schizo
     IdentityFile ~/.ssh/id_ed25519
     ForwardAgent yes
 
+# Numbers Station linux desktops
 Host atlantic
     ForwardX11 yes
     ForwardX11Trusted yes
@@ -41,6 +45,13 @@ Host arctic
     ForwardX11 yes
     ForwardX11Trusted yes
 
+# Asus Zephryus laptop
+Host beru
+    User nchiang
+    IdentityFile ~/.ssh/id_ed25519
+    ForwardAgent yes
+
+# MacBook Pro laptop
 Host mbp
     HostName nicholass-mbp
     User nicholas.chiang

@@ -46,7 +46,27 @@ profile tvhdmi {
 }
 
 # LG TV connected via HDMI and LG 45GX950A-B connected via DisplayPort
-profile forge {
+# Only enable the LG 5K2K display and disable the TV output
+profile lg {
+  # Position the LG TV above the LG GX95 display
+  output DP-4 enable scale 1 position 0,2160 mode 5120x2160
+  output HDMI-A-1 disable
+  # Automatically move workspaces 1-9 to the LG display
+  #exec setup-sway-workspaces
+  #exec swaymsg workspace 10, move workspace to HDMI-A-1
+  #exec swaymsg workspace 9, move workspace to DP-1
+  #exec swaymsg workspace 8, move workspace to DP-1
+  #exec swaymsg workspace 7, move workspace to DP-1
+  #exec swaymsg workspace 6, move workspace to DP-1
+  #exec swaymsg workspace 5, move workspace to DP-1
+  #exec swaymsg workspace 4, move workspace to DP-1
+  #exec swaymsg workspace 3, move workspace to DP-1
+  #exec swaymsg workspace 2, move workspace to DP-1
+  #exec swaymsg workspace 1, move workspace to DP-1
+}
+
+# LG TV connected via HDMI and LG 45GX950A-B connected via DisplayPort
+profile tv {
   # Position the LG TV above the LG GX95 display
   output DP-4 enable scale 1 position 0,2160 mode 5120x2160
   output HDMI-A-1 enable scale 1 position 512,0 mode 3840x2160@60

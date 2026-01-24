@@ -65,10 +65,12 @@ end
 alias vim="nvim"
 alias vi="nvim"
 alias cat="bat"
+alias jq="jaq"
 alias df="df -h"
 alias rg="rg -S"
 alias ping="gping"
 alias bcp="rsync -avzuhP"
+alias gpu="amdgpu_top --dark-mode"
 
 alias ls="eza"
 alias ll="ls -l --group-directories-first"

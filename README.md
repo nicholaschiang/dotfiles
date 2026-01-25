@@ -69,6 +69,22 @@ First, [install Arch](https://wiki.archlinux.org/title/Installation_guide).
 I referenced these two guides ([1](https://gist.github.com/mjkstra/96ce7a5689d753e7a6bdd92cdc169bae), [2](https://gist.github.com/uosyph/bb7db7606c4916535081ae7b0f6bff2d)) when I installed Arch alongside an existing Windows 11 installation.
 I had to resolve an issue with GRUB and LUKS encryption [this way](https://unix.stackexchange.com/questions/764872/luks-password-correct-but-not-accepted).
 
+### Figma
+
+To use custom font files on Figma in Firefox (on web), I had to:
+
+1. Install this [Figma agent for Linux](https://github.com/neetly/figma-agent-linux/tree/main?tab=readme-ov-file) user `systemd` service.
+2. Override the Firefox user agent to pretend to be a Windows machine (see [this thread](https://forum.figma.com/report-a-problem-6/requests-to-font-helper-on-linux-stopped-working-16569) for details). I went to `about:config` and set `general.useragent.override` to `Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:147.0) Gecko/20100101 Firefox/147.0`.
+
+### Flutter
+
+I installed [Flutter](https://docs.flutter.dev/install/manual) and [Dart](https://dart.dev/get-dart/archive) manually (the AUR package was out-of-date), by downloading the relevant files to `~/.local` and extracting them.
+I then moved the Dart SDK (with the required language server `snapshots/`) to the Flutter bin:
+
+```
+❯ rsync -avP ~/.local/dart-sdk/bin/ ~/.local/flutter/bin/
+```
+
 ### Essentials
 
 To configure WiFi:

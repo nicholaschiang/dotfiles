@@ -82,7 +82,7 @@ I installed [Flutter](https://docs.flutter.dev/install/manual) and [Dart](https:
 I then moved the Dart SDK (with the required language server `snapshots/`) to the Flutter bin:
 
 ```
-❯ rsync -avP ~/.local/dart-sdk/bin/ ~/.local/flutter/bin/
+❯ rsync -avP ~/.local/dart-sdk/ ~/.local/flutter/
 ```
 
 ### Essentials

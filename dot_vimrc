@@ -110,6 +110,9 @@ filetype indent on
 " Use the 'sh' filetype for all .env files
 autocmd BufNewFile,BufRead .env.* set filetype=sh
 
+" Use the `just` filetype for all Justfile files
+autocmd BufNewFile,BufRead Justfile set filetype=just
+
 " Set to auto read when a file is changed from the outside
 set autoread
 au FocusGained,BufEnter * checktime

@@ -80,6 +80,12 @@ client.placeholder $base03 $base02 $base2 $base03
 #output * bg $HOME/Pictures/OP6_01_4k.jpg stretch #000000
 output * bg $HOME/Pictures/background.png center #000000
 
+# Switch to TV
+bindsym $mod+t exec kanshictl switch tv
+
+# Switch to LG
+bindsym $mod+Shift+t exec kanshitctl switch lg
+
 #
 # Example configuration:
 #
@@ -110,6 +116,7 @@ for_window [app_id=".*"] inhibit_idle fullscreen
 
 bindsym $mod+Escape exec swaylock -f
 bindsym $mod+Backspace exec systemctl sleep
+bindsym $mod+Delete exec systemctl poweroff
 #bindsym $mod+Backspace exec swaymsg "output * power off"
 #bindsym $mod+Shift+Backspace exec swaymsg "output * power on"
 #bindsym $mod+Escape exec swaymsg "output * power off"
@@ -155,8 +162,8 @@ input "type:keyboard" {
     bindsym $mod+Shift+Return exec $term
 
     # Start foot in server mode
-    exec foot --server
-    bindsym $mod+u exec footclient
+    #exec foot --server
+    #bindsym $mod+u exec footclient
 
     # Start a web browser
     bindsym $mod+o exec $browser

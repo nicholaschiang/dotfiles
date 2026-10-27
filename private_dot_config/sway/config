@@ -168,6 +168,9 @@ input "type:keyboard" {
     # Start a web browser
     bindsym $mod+o exec $browser
 
+    # Start LocalSend (AirDrop, basically)
+    bindsym $mod+n exec localsend
+
     # Start bluetooth manager
     bindsym $mod+d exec rofi-bluetooth
 

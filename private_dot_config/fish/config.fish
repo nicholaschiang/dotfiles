@@ -28,6 +28,7 @@ fish_add_path $OMAKASEBLUE_PATH/bin
 fish_add_path /home/linuxbrew/.linuxbrew/bin
 fish_add_path /home/linuxbrew/.linuxbrew/sbin
 fish_add_path /usr/share/sway-contrib
+fish_add_path /opt/local/bin
 
 # Configurations
 if status --is-interactive

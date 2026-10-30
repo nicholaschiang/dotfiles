@@ -1,7 +1,15 @@
-# Hackintosh virtual machine
-Host macos
+# macOS Sonoma virtual machine
+Host sonoma
     HostName localhost
     Port 22220
+    User nchiang
+    IdentityFile ~/.ssh/id_ed25519
+    ForwardAgent yes
+
+# macOS Tahoe virtual machine
+Host tahoe
+    HostName localhost
+    Port 22221
     User nchiang
     IdentityFile ~/.ssh/id_ed25519
     ForwardAgent yes

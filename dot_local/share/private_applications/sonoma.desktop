@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=macOS Sonoma (14)
+Comment=macOS is a Unix operating system developed and marketed by Apple Inc. since 2001.
+GenericName=Operating System
+Icon=/home/nchiang/.local/share/applications/icons/sonoma.png
+Exec=quickemu --vm /home/nchiang/.local/macos-sonoma.conf --width 2560 --height 1600 --ssh-port 22220
+Type=Application
